@@ -128,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS README
 %attr(755,root,root) %{_bindir}/gconf*
 %attr(755,root,root) %{_libdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libdir}/gconfd-2
@@ -140,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 # outdated and almost empty
 #doc NEWS
-%doc AUTHORS ChangeLog TODO README
+%doc ChangeLog TODO
 %attr(755,root,root) %{_libdir}/lib*.??
 %attr(755,root,root) %{_libdir}/GConf2/lib*.la
 %doc %{_gtkdocdir}/gconf
