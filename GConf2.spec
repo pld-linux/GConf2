@@ -117,7 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gconfd-2
 %attr(755,root,root) %{_bindir}/gconftool-2
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%ghost %{_libdir}/libgconf-2.so.4
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
