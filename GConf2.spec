@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.1
-Release:	7
+Release:	8.1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/GConf/1.2/GConf-%{version}.tar.bz2
@@ -26,9 +26,7 @@ BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define		_sysconfdir	/etc/X11/GNOME2
+%define		_sysconfdir	/etc/GNOME2
 %define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
@@ -112,7 +110,6 @@ install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir} \
 	HTML_DIR=%{_gtkdocdir} 
 	
 install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
@@ -138,12 +135,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-# outdated and almost empty
-#doc NEWS
 %doc ChangeLog TODO
+%doc %{_gtkdocdir}/gconf
 %attr(755,root,root) %{_libdir}/lib*.??
 %{_libdir}/GConf2/lib*.la
-%doc %{_gtkdocdir}/gconf
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
