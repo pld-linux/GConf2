@@ -12,7 +12,8 @@ URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	bonobo-activation-devel >= 0.9.5
 #BuildRequires:	db3-devel
-BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	gtk+2-devel >= 2.0.1
+BuildRequires:	glib2-devel >= 2.0.1
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
