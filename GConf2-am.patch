@@ -1,0 +1,12 @@
+diff -urN GConf-1.1.9.org/backends/Makefile.am GConf-1.1.9/backends/Makefile.am
+--- GConf-1.1.9.org/backends/Makefile.am	Fri Apr 19 00:22:29 2002
++++ GConf-1.1.9/backends/Makefile.am	Fri Apr 19 00:25:42 2002
+@@ -34,5 +34,6 @@
+ 
+ noinst_PROGRAMS = xml-test
+ 
+-xml_test_SOURCES= $(libgconfbackend_xml_la_SOURCES) xml-test.c
+-xml_test_LDADD = $(DEPENDENT_WITH_XML_LIBS) $(top_builddir)/gconf/libgconf-$(MAJOR_VERSION).la
++#xml_test_SOURCES= $(libgconfbackend_xml_la_SOURCES) xml-test.c
++#xml_test_LDADD = $(DEPENDENT_WITH_XML_LIBS) $(top_builddir)/gconf/libgconf-$(MAJOR_VERSION).la
++
