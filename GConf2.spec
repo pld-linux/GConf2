@@ -7,7 +7,10 @@ Release:	1
 License:	LGPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
@@ -25,15 +28,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GConf2 is a configuration database system, functionally similar to the
-Windows registry but lots better. :-) It's being written for the GNOME2
-desktop but does not require GNOME2; configure should notice if GNOME2
-is not installed and compile the basic GConf2 library anyway.
+Windows registry but lots better. :-) It's being written for the
+GNOME2 desktop but does not require GNOME2; configure should notice if
+GNOME2 is not installed and compile the basic GConf2 library anyway.
 
 %description -l pl
 GConf2 jest systemem konfiguracyjnej bazy danych, funkcjonalnie
 podobnej do rejestru Windows, ale o wiele lepszej :-). Jest pisana dla
-desktopu GNOME2, ale nie wymaga GNOME2; skrypt configure powinien wykryæ
-brak gnome i skompilowaæ tylko wersjê podstawow± GConf2.
+desktopu GNOME2, ale nie wymaga GNOME2; skrypt configure powinien
+wykryæ brak gnome i skompilowaæ tylko wersjê podstawow± GConf2.
 
 %description -l pt_BR
 Gconf2 é o sistema de banco de dados de configuração do GNOME2.
@@ -61,7 +64,7 @@ GConf2 includes etc.
 %description devel -l pl
 Pliki nag³ówkowe GConf2.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Sistema de Configuração do GNOME2 - arquivos para desenvolvimento.
 
 %package static
@@ -84,7 +87,7 @@ GConf2 static libraries.
 %description static -l pl
 Biblioteki statyczne GConf2.
 
-%description -l pt_BR static
+%description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com gconf
 
 %prep
