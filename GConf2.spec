@@ -3,18 +3,18 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
-Version:	2.7.91.1
+Version:	2.7.92
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.7/GConf-%{version}.tar.bz2
-# Source0-md5:	cfcb3c8447252591159bf45ca805415f
+# Source0-md5:	e1d7f033e26ba2eabc6321e9079e0d98
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 Patch3:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.11.1
+BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -49,7 +49,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.11.1
+Requires:	ORBit2-devel >= 1:2.11.2
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.0
 Obsoletes:	libGConf2-devel
