@@ -24,7 +24,7 @@ diff -Nur GConf-1.2.1/gconf/Makefile.am GConf-1.2.1.new/gconf/Makefile.am
  	-DGCONF_SERVERDIR=\""$(libexecdir)"\"           \
  	-DGCONF_BUILDDIR=\""$(top_builddir)"\"				\
 -	-DGCONF_BACKEND_DIR=\""$(pkglibdir)/$(MAJOR_VERSION)"\"		\
-+	-DGCONF_BACKEND_DIR=\""$(pkglibdir)"\"				\
++	-DGCONF_BACKEND_DIR=\""$(pkglibdir)$(MAJOR_VERSION)"\"				\
  	-DVERSION=\""$(VERSION)"\"					\
  	-DGCONF_ENABLE_INTERNALS=1					\
  	-DGCONFD=\""$(GCONFD_BINARY_NAME)"\"				\
