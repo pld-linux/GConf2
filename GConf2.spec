@@ -137,7 +137,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
 %doc %{_gtkdocdir}/gconf
-%attr(755,root,root) %{_libdir}/lib*.??
+%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/GConf2/lib*.la
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
