@@ -1,0 +1,19 @@
+diff -Nur GConf-1.2.1/gconf/default.path.in GConf-1.2.1-new/gconf/default.path.in
+--- GConf-1.2.1/gconf/default.path.in	Mon Jan 31 21:49:05 2000
++++ GConf-1.2.1-new/gconf/default.path.in	Thu Aug 29 12:41:18 2002
+@@ -8,6 +8,7 @@
+ # Look first in systemwide mandatory settings directory
+ # (commented out until xml backend knows how to be read-only for users)
+ xml:readonly:@EXPANDED_SYSCONFDIR@/gconf/gconf.xml.mandatory
++xml:readonly:/etc/X11/GNOME/gconf/gconf.xml.mandatory
+ 
+ # Now see where users want us to look - basically the user can stick arbitrary 
+ # sources in a ~/.gconf.path file and they're inserted here
+@@ -20,6 +21,5 @@
+ # Finally, look at the systemwide defaults
+ # (commented out for now)
+ xml:readonly:@EXPANDED_SYSCONFDIR@/gconf/gconf.xml.defaults
+-
+-
++xml:readonly:/etc/X11/GNOME/gconf/gconf.xml.defaults
+ 
