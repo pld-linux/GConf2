@@ -2,8 +2,8 @@ Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
-Version:	1.1.8
-Release:	3
+Version:	1.1.9
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -100,6 +100,12 @@ install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 	pkgconfigdir=%{_pkgconfigdir}
 	
 gzip -9nf AUTHORS ChangeLog TODO NEWS README
+
+# fix broken includes
+for inc in `ls $RPM_BUILD_ROOT%{_includedir}/gconf2/*.h`; do
+	sed -e 's,include <gconf/,include <,' $inc > $inc.
+	mv -f $inc. $inc
+done
 
 %find_lang %{name}
 
