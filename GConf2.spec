@@ -8,6 +8,7 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
+Patch1:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	bonobo-activation-devel >= 0.9.5
@@ -79,6 +80,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %prep
 %setup -q -n GConf-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing acinclude.m4
