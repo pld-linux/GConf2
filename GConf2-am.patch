@@ -1,15 +1,18 @@
 diff -urN GConf-1.1.9.org/backends/Makefile.am GConf-1.1.9/backends/Makefile.am
 --- GConf-1.1.9.org/backends/Makefile.am	Fri Apr 19 00:22:29 2002
 +++ GConf-1.1.9/backends/Makefile.am	Fri Apr 19 00:35:32 2002
-@@ -32,7 +32,8 @@
- libgconfbackend_bdb_la_LDFLAGS = -avoid-version -module
- libgconfbackend_bdb_la_LIBADD = $(DEPENDENT_LIBS) $(BDB_LIBS)
+@@ -26,10 +26,11 @@
+ libgconfbackend_xml_la_LDFLAGS = -avoid-version -module -no-undefined
+ libgconfbackend_xml_la_LIBADD = $(DEPENDENT_LIBS) $(top_builddir)/gconf/libgconf-$(MAJOR_VERSION).la
  
 -noinst_PROGRAMS = xml-test
 +#noinst_PROGRAMS = xml-test
 +
-+#xml_test_SOURCES= $(libgconfbackend_xml_la_SOURCES) xml-test.c
++#xml_test_SOURCES= $(libgconfbackend_oldxml_la_SOURCES) xml-test.c
 +#xml_test_LDADD = $(DEPENDENT_WITH_XML_LIBS) $(top_builddir)/gconf/libgconf-$(MAJOR_VERSION).la
  
--xml_test_SOURCES= $(libgconfbackend_xml_la_SOURCES) xml-test.c
+-xml_test_SOURCES= $(libgconfbackend_oldxml_la_SOURCES) xml-test.c
 -xml_test_LDADD = $(DEPENDENT_WITH_XML_LIBS) $(top_builddir)/gconf/libgconf-$(MAJOR_VERSION).la
+ 
+ bin_PROGRAMS = gconf-merge-tree
+  
