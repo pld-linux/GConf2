@@ -30,7 +30,7 @@
  	gconf-client.h
  
 -gconfincludedir = $(includedir)/gconf/$(MAJOR_VERSION)/gconf
-+gconfincludedir = $(includedir)/gconf$(MAJOR_VERSION)
++gconfincludedir = $(includedir)/gconf$(MAJOR_VERSION)/gconf
  gconfinclude_HEADERS = 		\
  	$(gconf_headers) 	\
  	gconf-enum-types.h
