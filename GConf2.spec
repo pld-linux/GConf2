@@ -13,11 +13,14 @@ Patch2:		%{name}-path.patch
 Patch3:		%{name}-unlock-dialog.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bonobo-activation-devel >= 1.0.3
 #BuildRequires:	db3-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	glib2-devel >= 2.0.6
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
