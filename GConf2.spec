@@ -1,14 +1,18 @@
+
+%define 	snap		20030618
+
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2
 Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… Gnome
 Name:		GConf2
 Version:	2.3.2
-Release:	1
+Release:	1.%{snap}
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
-# Source0-md5: 69dbc9b2732f877a84e61563ce93098c
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
+Source0:	GConf-%{version}-%{snap}.tar.bz2
+# Source0-md5:	1d15244516a6a855490aa10e978a92b4
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
