@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.1
-Release:	9
+Release:	10
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/GConf/1.2/GConf-%{version}.tar.bz2
@@ -24,6 +24,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
+BuildRequires:	Xft-devel >= 2.0-6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
