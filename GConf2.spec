@@ -10,6 +10,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
+Patch3:		%{name}-unlock-dialog.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	bonobo-activation-devel >= 1.0.3
@@ -85,11 +86,12 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -f missing acinclude.m4
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
@@ -101,13 +103,14 @@ aclocal
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
-install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir} \
 	HTML_DIR=%{_gtkdocdir} 
 	
+install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
+
 %find_lang %{name}
 
 %clean
