@@ -3,30 +3,30 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.1
-Release:	3
+Release:	10
 License:	LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/GConf/1.2/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
+Patch3:		%{name}-unlock-dialog.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bonobo-activation-devel >= 1.0.3
-#BuildRequires:	db3-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2.0.6
-BuildRequires:	glib2-devel >= 2.0.6
+BuildRequires:	gtk+2-devel >= 2.1.3
+BuildRequires:	glib2-devel >= 2.1.3
+BuildRequires:	freetype-devel
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
+BuildRequires:	Xft-devel >= 2.0-6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
-
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define		_sysconfdir	/etc/X11/GNOME2
-%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
 GConf2 is a configuration database system, functionally similar to the
@@ -85,29 +85,34 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -f missing acinclude.m4
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+%ifarch ppc
+	--disable-gtk-doc 
+%else
+	--enable-gtk-doc 
+%endif
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
-install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir} \
 	HTML_DIR=%{_gtkdocdir} 
 	
+install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
+
 %find_lang %{name}
 
 %clean
@@ -118,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS README
 %attr(755,root,root) %{_bindir}/gconf*
 %attr(755,root,root) %{_libdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libdir}/gconfd-2
@@ -128,12 +134,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-# outdated and almost empty
-#doc NEWS
-%doc AUTHORS ChangeLog TODO README
-%attr(755,root,root) %{_libdir}/lib*.??
-%attr(755,root,root) %{_libdir}/GConf2/lib*.la
+%doc ChangeLog TODO
 %doc %{_gtkdocdir}/gconf
+%attr(755,root,root) %{_libdir}/lib*.??
+%{_libdir}/GConf2/lib*.la
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
