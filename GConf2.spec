@@ -4,7 +4,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
 Version:	2.4.0.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.4/GConf-%{version}.tar.bz2
@@ -12,6 +12,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.4/GConf-%{version}.tar.b
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
+Patch3:		%{name}-am18.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	autoconf
@@ -87,6 +88,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -f missing acinclude.m4
