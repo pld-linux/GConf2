@@ -6,7 +6,7 @@ Version:	1.2.1
 Release:	6
 License:	LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/GConf/1.2/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
@@ -101,7 +101,7 @@ rm -f missing acinclude.m4
 %ifarch ppc
 	--disable-gtk-doc 
 %else
-	--disable-gtk-doc 
+	--enable-gtk-doc 
 %endif
 
 %{__make}
