@@ -56,7 +56,8 @@ Group(ru):	X11/Разработка/Библиотеки
 Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	ORBit2-devel
-Requires:	gtk+2-devel
+Requires:	bonobo-activation-devel
+Requires:	libxml2-devel
 Requires:	bonobo-activation-devel
 
 %description devel
