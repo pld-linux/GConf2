@@ -20,13 +20,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.3.2
-BuildRequires:	gtk-doc
+BuildRequires:	gtk-doc >= 0.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GConf2 is a configuration database system, functionally similar to the
