@@ -39,7 +39,7 @@ GNOME2 is not installed and compile the basic GConf2 library anyway.
 GConf2 jest systemem konfiguracyjnej bazy danych, funkcjonalnie
 podobnej do rejestru Windows, ale o wiele lepszej :-). Jest pisana dla
 desktopu GNOME2, ale nie wymaga GNOME2; skrypt configure powinien
-wykryæ brak gnome i skompilowaæ tylko wersjê podstawow± GConf2.
+wykryæ brak GNOME2 i skompilowaæ tylko wersjê podstawow± GConf2.
 
 %description -l pt_BR
 Gconf2 é o sistema de banco de dados de configuração do GNOME2.
