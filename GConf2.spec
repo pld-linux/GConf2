@@ -3,12 +3,13 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
+Patch2:		%{name}-path.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	bonobo-activation-devel >= 1.0.3
@@ -83,6 +84,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing acinclude.m4
