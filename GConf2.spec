@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.1.8
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -17,6 +17,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libGConf2
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -47,6 +48,7 @@ Requires:	ORBit2-devel
 Requires:	bonobo-activation-devel
 Requires:	libxml2-devel
 Requires:	bonobo-activation-devel
+Obsoletes:	libGConf2-devel
 
 %description devel
 GConf2 includes etc.
