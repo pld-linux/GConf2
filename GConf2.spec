@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -25,7 +25,7 @@ Obsoletes:	libGConf2
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME2
-%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
+%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
 GConf2 is a configuration database system, functionally similar to the
@@ -50,8 +50,8 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	ORBit2-devel
 Requires:	bonobo-activation-devel
+Requires:	gtk-doc-common
 Requires:	libxml2-devel
-Requires:	bonobo-activation-devel
 Obsoletes:	libGConf2-devel
 
 %description devel
