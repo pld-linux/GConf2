@@ -15,10 +15,9 @@ URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 1.0.3
+BuildRequires:	db3-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2.0.6
-BuildRequires:	glib2-devel >= 2.0.6
+BuildRequires:	gtk+2-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
@@ -53,9 +52,10 @@ Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolviment
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	ORBit2-devel
-Requires:	bonobo-activation-devel
+Requires:	gtk+2-devel
 Requires:	gtk-doc-common
 Requires:	libxml2-devel
+Requires:	popt-devel
 Obsoletes:	libGConf2-devel
 
 %description devel
