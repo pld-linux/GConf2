@@ -3,22 +3,20 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
-Version:	2.6.4
+Version:	2.8.0.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.6/GConf-%{version}.tar.bz2
-# Source0-md5:	7a24af8dd5f3e810a7f8cc21a7c88ded
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.8/GConf-%{version}.tar.bz2
+# Source0-md5:	54276dd7d6d50c96f77dc46da2bf5edf
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
-Patch1:		%{name}-am.patch
-Patch2:		%{name}-path.patch
-Patch3:		%{name}-locale-names.patch
+Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.10.2
+BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	automake >= 1.7
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2:2.4.3
+BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 0.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0
@@ -49,7 +47,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.10.2
+Requires:	ORBit2-devel >= 1:2.11.2
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.0
 Obsoletes:	libGConf2-devel
@@ -83,10 +81,6 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-
-mv -f po/{no,nb}.po
 
 %build
 rm -f acinclude.m4
@@ -112,6 +106,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
 
