@@ -1,17 +1,13 @@
-
-%define		snap		20030330
-
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2
 Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… Gnome
 Name:		GConf2
-Version:	2.3.1
-Release:	1.%{snap}
+Version:	2.3.2
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	%{name}-%{version}-%{snap}.tar.bz2
-#Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
@@ -85,8 +81,7 @@ Biblioteki statyczne GConf2.
 Bibliotecas est·ticas para desenvolvimento com gconf
 
 %prep
-%setup -q
-#%%setup -q -n GConf-%{version}
+%setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -114,8 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	HTML_DIR=%{_gtkdocdir} 
+	DESTDIR=$RPM_BUILD_ROOT 
 	
 install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
