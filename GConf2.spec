@@ -3,17 +3,16 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
-Version:	2.6.0
+Version:	2.6.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.6/GConf-%{version}.tar.bz2
-# Source0-md5:	241ca25941e5bfa0f71725c30e17ab6e
+# Source0-md5:	194fab4e2e87c7ae3c7fea926fd281bc
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
-Patch3:		%{name}-am18.patch
-Patch4:		%{name}-locale-names.patch
+Patch3:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.10.0
 BuildRequires:	autoconf
@@ -86,7 +85,6 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 mv -f po/{no,nb}.po
 
