@@ -2,7 +2,7 @@ Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
-Version:	1.1.11
+Version:	1.2.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
