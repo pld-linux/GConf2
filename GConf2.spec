@@ -4,6 +4,7 @@
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2
+Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… Gnome
 Name:		GConf2
 Version:	2.3.1
 Release:	1.%{snap}
@@ -89,7 +90,6 @@ Bibliotecas est·ticas para desenvolvimento com gconf
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-#%patch3 -p1
 
 %build
 rm -f missing acinclude.m4
