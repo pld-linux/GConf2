@@ -3,21 +3,21 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
-Version:	2.8.1
+Version:	2.10.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.8/GConf-%{version}.tar.bz2
-# Source0-md5:	b1173cbe33404bcbcc15710ce2a28f67
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.10/GConf-%{version}.tar.bz2
+# Source0-md5:	a7cd37be4e317195a6668a086fc72033
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.11.2
+BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2:2.4.4
-BuildRequires:	gtk-doc >= 0.6
+BuildRequires:	gtk+2-devel >= 2:2.6.2
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	perl-base
@@ -47,7 +47,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.11.2
+Requires:	ORBit2-devel >= 1:2.12.1
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.0
 Obsoletes:	libGConf2-devel
