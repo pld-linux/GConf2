@@ -1,31 +1,27 @@
-
-%define 	snap		20030618
-
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
-Version:	2.3.2
-Release:	1.%{snap}
+Version:	2.3.3
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-#Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
-Source0:	GConf-%{version}-%{snap}.tar.bz2
-# Source0-md5:	1d15244516a6a855490aa10e978a92b4
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
+# Source0-md5:	f3f400482e9f9ac2ff0bef960664b8c6
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel
-BuildRequires:	Xft-devel >= 2.1-2
+BuildRequires:	ORBit2-devel >= 2.7.2
+BuildRequires:	xft-devel >= 2.1.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	freetype-devel
+BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	glib2-devel >= 2.2.0
-BuildRequires:	libbonobo >= 2.3.1-4
+BuildRequires:	libbonobo >= 2.3.3
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
