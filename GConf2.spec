@@ -16,11 +16,11 @@ BuildRequires:	ORBit2-devel
 BuildRequires:	Xft-devel >= 2.1-2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 2.1.1
 BuildRequires:	freetype-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	libbonobo >= 2.3.1-4
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
@@ -50,8 +50,8 @@ Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolviment
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	ORBit2-devel
-Requires:	bonobo-activation-devel
 Requires:	gtk-doc-common
+Requires:	libbonobo-devel
 Requires:	libxml2-devel
 Obsoletes:	libGConf2-devel
 
