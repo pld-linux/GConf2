@@ -4,7 +4,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
 Version:	2.4.0.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.4/GConf-%{version}.tar.bz2
@@ -13,21 +13,19 @@ Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 Patch3:		%{name}-am18.patch
+Patch4:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	gtk-doc
 BuildRequires:	glib2-devel >= 2.2.0
-BuildRequires:	libbonobo >= 2.4.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
-BuildRequires:	xft-devel >= 2.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
@@ -51,11 +49,10 @@ Summary:	GConf2 includes, etc
 Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	ORBit2-devel
+Requires:	%{name} = %{version}-%{release}
+Requires:	ORBit2-devel >= 2.8.0
 Requires:	gtk-doc-common
-Requires:	libbonobo-devel
-Requires:	libxml2-devel
+Requires:	libxml2-devel >= 2.0
 Obsoletes:	libGConf2-devel
 
 %description devel
@@ -72,7 +69,7 @@ Summary:	GConf2 static libraries
 Summary(pl):	Biblioteki statyczne GConf2
 Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com gconf2
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GConf2 static libraries.
@@ -89,9 +86,12 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+
+mv -f po/{no,nb}.po
 
 %build
-rm -f missing acinclude.m4
+rm -f acinclude.m4
 glib-gettextize --copy --force
 %{__libtoolize}
 %{__aclocal}
