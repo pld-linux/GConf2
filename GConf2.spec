@@ -1,7 +1,7 @@
 Summary:	GNOME2 configuration database system
-Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
-Summary(pt_BR):	Sistema de ConfiguraГЦo do GNOME2
-Summary(ru):	Система конфигурации Gnome
+Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
+Summary(pt_BR):	Sistema de ConfiguraГЦo do GNOME 2
+Summary(ru):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.6.3
 Release:	1
