@@ -1,12 +1,16 @@
+
+%define		snap		20030330
+
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	2.3.1
-Release:	1
+Release:	1.%{snap}
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
+Source0:	%{name}-%{version}-%{snap}.tar.bz2
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.3/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
@@ -80,7 +84,8 @@ Biblioteki statyczne GConf2.
 Bibliotecas estáticas para desenvolvimento com gconf
 
 %prep
-%setup -q -n GConf-%{version}
+%setup -q
+#%%setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -88,10 +93,12 @@ Bibliotecas estáticas para desenvolvimento com gconf
 
 %build
 rm -f missing acinclude.m4
+glib-gettextize --copy --force
 %{__libtoolize}
 %{__aclocal}
-%{__autoconf}
+%{__autoheader}
 %{__automake}
+%{__autoconf}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 %ifarch ppc
