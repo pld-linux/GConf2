@@ -3,31 +3,31 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ Gnome
 Name:		GConf2
-Version:	2.4.0.1
-Release:	3
+Version:	2.6.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.4/GConf-%{version}.tar.bz2
-# Source0-md5:	2f7548d0bad24d7c4beba54d0ec98a20
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.6/GConf-%{version}.tar.bz2
+# Source0-md5:	241ca25941e5bfa0f71725c30e17ab6e
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 Patch3:		%{name}-am18.patch
 Patch4:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 2.8.0
+BuildRequires:	ORBit2-devel >= 1:2.10.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2.2.0
-BuildRequires:	gtk-doc
-BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	gtk-doc >= 0.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GConf2 is a configuration database system, functionally similar to the
@@ -50,7 +50,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 2.8.0
+Requires:	ORBit2-devel >= 1:2.10.0
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.0
 Obsoletes:	libGConf2-devel
@@ -96,8 +96,8 @@ glib-gettextize --copy --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
-%{__automake}
 %{__autoconf}
+%{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 %ifarch ppc
@@ -110,12 +110,10 @@ glib-gettextize --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %find_lang %{name}
 
@@ -130,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS README
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/gconf*
 %attr(755,root,root) %{_libdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libdir}/gconfd-2
@@ -139,6 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
 %{_datadir}/sgml/gconf
+%{_mandir}/man1/*.gz
 
 %files devel
 %defattr(644,root,root,755)
