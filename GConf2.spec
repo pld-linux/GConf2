@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.1.9
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -120,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gconfd-2
 %attr(755,root,root) %{_bindir}/gconftool-2
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%ghost %{_libdir}/libgconf-2.so.4
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
