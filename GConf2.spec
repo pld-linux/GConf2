@@ -3,16 +3,16 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.1.8
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
-BuildRequires:	bonobo-activation-devel
+BuildRequires:	bonobo-activation-devel >= 0.9.5
 #BuildRequires:	db3-devel
-BuildRequires:	gtk+2-devel >= 1.3.14
+BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
@@ -82,7 +82,7 @@ rm -f missing acinclude.m4
 libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--enable-gtk-doc=no
 
