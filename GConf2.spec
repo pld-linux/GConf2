@@ -98,9 +98,9 @@ glib-gettextize --copy --force
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 %ifarch ppc
-	--disable-gtk-doc 
+	--disable-gtk-doc
 %else
-	--enable-gtk-doc 
+	--enable-gtk-doc
 %endif
 
 %{__make}
@@ -110,8 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_aclocaldir},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT 
-	
+	DESTDIR=$RPM_BUILD_ROOT
+
 install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %find_lang %{name}
