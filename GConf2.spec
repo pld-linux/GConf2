@@ -2,7 +2,7 @@ Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
-Version:	1.1.6
+Version:	1.1.8
 Release:	1
 License:	LGPL
 Group:		X11/Applications
@@ -12,11 +12,12 @@ Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
+Patch0:		%{name}-NO_MAJOR_VERSION.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
 BuildRequires:	bonobo-activation-devel
-BuildRequires:	db3-devel
-BuildRequires:	glib2-devel
+#BuildRequires:	db3-devel
+BuildRequires:	gtk+2-devel >= 1.3.14
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
@@ -92,8 +93,14 @@ Bibliotecas estáticas para desenvolvimento com gconf
 
 %prep
 %setup -q -n GConf-%{version}
+%patch0 -p1
 
 %build
+rm -f missing acinclude.m4
+libtoolize --copy --force
+aclocal
+autoconf
+automake -a -c
 %configure \
 	--enable-gtk-doc=no
 
@@ -108,7 +115,7 @@ install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 	
-gzip -9nf AUTHORS ChangeLog NEWS README
+gzip -9nf AUTHORS ChangeLog TODO NEWS README
 
 %find_lang %{name}
 
@@ -120,22 +127,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*-2
+%attr(755,root,root) %{_bindir}/gconfd-2
+%attr(755,root,root) %{_bindir}/gconftool-2
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_libdir}/GConf
-%dir %{_libdir}/GConf/2
-%attr(755,root,root) %{_libdir}/GConf/2/lib*.??
+%dir %{_libdir}/GConf2
+%attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
 
 %files devel
 %defattr(644,root,root,755)
 %doc *gz
 %attr(755,root,root) %{_libdir}/lib*.??
-%{_includedir}/gconf
+%attr(755,root,root) %{_libdir}/GConf2/lib*.la
+%{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/GConf/2/lib*.a
+%{_libdir}/GConf2/lib*.a
 %{_libdir}/lib*.a
