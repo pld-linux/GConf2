@@ -87,8 +87,8 @@ Bibliotecas estáticas para desenvolvimento com gconf
 rm -f missing acinclude.m4
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gtk-doc=no
 
