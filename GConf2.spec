@@ -3,12 +3,12 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME 2
 Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… GNOME 2
 Name:		GConf2
-Version:	2.9.2
+Version:	2.9.91
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.9/GConf-%{version}.tar.bz2
-# Source0-md5:	49e7487c8882d271633cf18935e9eec9
+# Source0-md5:	65cf7da6b91f168a8b9c9eb7503781d6
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
