@@ -14,7 +14,7 @@ Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1.7
+BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 0.6
