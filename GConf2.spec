@@ -3,12 +3,12 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2
 Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… Gnome
 Name:		GConf2
-Version:	2.6.1
+Version:	2.7.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.6/GConf-%{version}.tar.bz2
-# Source0-md5:	194fab4e2e87c7ae3c7fea926fd281bc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.7/GConf-%{version}.tar.bz2
+# Source0-md5:	f751eda1c986e76ed7ac8f91e12b96e0
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
