@@ -13,16 +13,17 @@ Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 2.7.2
+BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-devel >= 2.1.4
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.2.0
+BuildRequires:	gtk-doc
 BuildRequires:	glib2-devel >= 2.2.0
 BuildRequires:	libbonobo >= 2.4.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
