@@ -141,7 +141,8 @@ rm -rf $RPM_BUILD_ROOT
 # outdated and almost empty
 #doc NEWS
 %doc ChangeLog TODO
-%attr(755,root,root) %{_libdir}/lib*.??
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_libdir}/GConf2/lib*.la
 %doc %{_gtkdocdir}/gconf
 %{_includedir}/gconf2
