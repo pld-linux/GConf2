@@ -117,6 +117,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gconf*
+%attr(755,root,root) %{_libdir}/gconf-sanity-check-2
+%attr(755,root,root) %{_libdir}/gconfd-2
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
