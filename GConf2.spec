@@ -13,18 +13,18 @@ Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
+BuildRequires:	Xft-devel >= 2.1-2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bonobo-activation-devel >= 2.1.1
+BuildRequires:	freetype-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	glib2-devel >= 2.2.0
-BuildRequires:	freetype-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
-BuildRequires:	Xft-devel >= 2.1-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
@@ -115,6 +115,9 @@ install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %find_lang %{name}
 
+# no *.{la,a} for modules - shut up check-files
+rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -137,14 +140,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
 %doc %{_gtkdocdir}/gconf
-%{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/GConf2/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/GConf2/lib*.a
 %{_libdir}/lib*.a
