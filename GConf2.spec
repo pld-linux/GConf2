@@ -14,7 +14,6 @@ Patch1:		%{name}-am.patch
 Patch2:		%{name}-path.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.7.2
-BuildRequires:	xft-devel >= 2.1.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-devel >= 2.1.4
@@ -26,6 +25,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
+BuildRequires:	xft-devel >= 2.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
