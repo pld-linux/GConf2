@@ -137,17 +137,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
 %{_datadir}/sgml/gconf
-%{_mandir}/man1/*.gz
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
-%doc %{_gtkdocdir}/gconf
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
+%{_gtkdocdir}/gconf
 
 %files static
 %defattr(644,root,root,755)
