@@ -6,11 +6,6 @@ Version:	1.1.8
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/AplicaГУes
-Group(pt):	X11/AplicaГУes
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 URL:		http://www.gnome.org/
@@ -47,13 +42,6 @@ Summary:	GConf2 includes, etc
 Summary(pl):	Pliki nagЁСwkowe GConf2
 Summary(pt_BR):	Sistema de ConfiguraГЦo do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	ORBit2-devel
 Requires:	bonobo-activation-devel
@@ -74,13 +62,6 @@ Summary:	GConf2 static libraries
 Summary(pl):	Biblioteki statyczne GConf2
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com gconf2
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
