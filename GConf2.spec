@@ -26,8 +26,6 @@ BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libGConf2
 
-%define		_sysconfdir	/etc/gconf
-
 %description
 GConf2 is a configuration database system, functionally similar to the
 Windows registry but lots better. :-) It's being written for the
