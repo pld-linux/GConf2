@@ -1,12 +1,12 @@
-diff -urN GConf-2.5.90.orig/configure.in GConf-2.5.90/configure.in
---- GConf-2.5.90.orig/configure.in	2004-02-24 19:33:03.612150704 +0100
-+++ GConf-2.5.90/configure.in	2004-02-24 19:33:39.171744824 +0100
-@@ -216,7 +216,7 @@
+diff -urN GConf-2.6.1.orig/configure.in GConf-2.6.1/configure.in
+--- GConf-2.6.1.orig/configure.in	2004-04-19 23:32:25.698204600 +0200
++++ GConf-2.6.1/configure.in	2004-04-19 23:36:22.654181816 +0200
+@@ -230,7 +230,7 @@
  
  AC_CHECK_FUNCS(flockfile)
  
--ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_GB es eu fa fi fr ga gl hi hr hu id it ja ko lt lv mk ml mn ms nl nn no pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi yi zh_CN zh_TW ta"
-+ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_GB es eu fa fi fr ga gl hi hr hu id it ja ko lt lv mk ml mn ms nb nl nn pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi yi zh_CN zh_TW ta"
+-ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es eu fa fi fr ga gl gu hi hr hu id it ja ko lt lv mk ml mn ms nl nn no pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi yi zh_CN zh_TW ta"
++ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_CA en_GB es eu fa fi fr ga gl gu hi hr hu id it ja ko lt lv mk ml mn ms nb nl nn pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv tr uk vi yi zh_CN zh_TW ta"
  
  AM_GLIB_GNU_GETTEXT
  
