@@ -19,6 +19,7 @@ BuildRequires:	bonobo-activation-devel >= 1.0.3
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	glib2-devel >= 2.0.6
+BuildRequires:	freetype-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
