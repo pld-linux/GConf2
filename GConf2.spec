@@ -3,7 +3,7 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
 Version:	1.2.1
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -95,8 +95,12 @@ rm -f missing acinclude.m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+%ifarch ppc
+	--disable-gtk-doc 
+%else
+	--disable-gtk-doc 
+%endif
 
 %{__make}
 
