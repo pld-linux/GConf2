@@ -103,8 +103,6 @@ install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 	
-gzip -9nf AUTHORS ChangeLog TODO NEWS README
-
 %find_lang %{name}
 
 %clean
@@ -123,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *gz
+%doc AUTHORS ChangeLog TODO NEWS README
 %attr(755,root,root) %{_libdir}/lib*.??
 %attr(755,root,root) %{_libdir}/GConf2/lib*.la
 %doc %{_datadir}/gtk-doc/html/gconf
