@@ -2,8 +2,8 @@ Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME2
 Summary(pt_BR):	Sistema de Configuração do GNOME2
 Name:		GConf2
-Version:	1.1.10
-Release:	2
+Version:	1.1.11
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/pre-gnome2/sources/GConf/GConf-%{version}.tar.bz2
@@ -11,7 +11,7 @@ Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel
-BuildRequires:	bonobo-activation-devel >= 0.9.5
+BuildRequires:	bonobo-activation-devel >= 1.0.0
 #BuildRequires:	db3-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2.0.1
@@ -25,6 +25,7 @@ Obsoletes:	libGConf2
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME2
+%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
 
 %description
 GConf2 is a configuration database system, functionally similar to the
@@ -90,7 +91,8 @@ aclocal
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc=no
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
@@ -101,7 +103,8 @@ install gconf.m4 $RPM_BUILD_ROOT%{_aclocaldir}/gconf-2.m4
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir}
+	pkgconfigdir=%{_pkgconfigdir} \
+	HTML_DIR=%{_gtkdocdir} 
 	
 %find_lang %{name}
 
@@ -121,10 +124,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog TODO NEWS README
+# outdated and almost empty
+#doc NEWS
+%doc AUTHORS ChangeLog TODO README
 %attr(755,root,root) %{_libdir}/lib*.??
 %attr(755,root,root) %{_libdir}/GConf2/lib*.la
-%doc %{_datadir}/gtk-doc/html/gconf
+%doc %{_gtkdocdir}/gconf
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
