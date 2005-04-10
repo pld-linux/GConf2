@@ -4,7 +4,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.10.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.10/GConf-%{version}.tar.bz2
@@ -23,6 +23,7 @@ BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
+BuildRequires:	rpmbuild(macros) >= 1.197
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -84,7 +85,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 
 %build
 rm -f acinclude.m4
-glib-gettextize --copy --force
+%{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
@@ -117,8 +118,11 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post
+%ldconfig_post
+
+%postun
+%ldconfig_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
