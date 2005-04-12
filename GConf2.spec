@@ -118,11 +118,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%ldconfig_post
-
-%postun
-%ldconfig_postun
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
