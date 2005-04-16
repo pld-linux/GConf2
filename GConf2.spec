@@ -7,7 +7,7 @@ Version:	2.10.0
 Release:	2
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.10/GConf-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.10/GConf-%{version}.tar.bz2
 # Source0-md5:	a7cd37be4e317195a6668a086fc72033
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
@@ -16,10 +16,10 @@ BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2:2.6.2
-BuildRequires:	gtk-doc >= 1.0
+BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
@@ -50,7 +50,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.12.1
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 2.0
+Requires:	libxml2-devel >= 1:2.6.19
 Obsoletes:	libGConf2-devel
 
 %description devel
