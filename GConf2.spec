@@ -4,13 +4,14 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.10.0
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.10/GConf-%{version}.tar.bz2
 # Source0-md5:	a7cd37be4e317195a6668a086fc72033
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
+Patch2:		%{name}-shutdown.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf
@@ -82,6 +83,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f acinclude.m4
