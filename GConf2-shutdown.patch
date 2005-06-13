@@ -1,11 +1,17 @@
 --- GConf-2.10.0.orig/gconf/gconfd.c	2005-02-06 22:35:21.000000000 +0100
 +++ GConf-2.10.0/gconf/gconfd.c	2005-06-09 17:03:48.010021608 +0200
-@@ -1029,7 +1029,7 @@
-       if (db == default_db)
- 	{
- 	  tmp_list = g_list_next (tmp_list);
--	  continue;
-+	  if (tmp_list) continue;
- 	}
+@@ -1150,8 +1150,12 @@ no_databases_in_use (void)
+   /* Only the default database still open, and
+    * it has no listeners
+    */
+-  return db_list == NULL &&
+-    gconf_listeners_count (default_db->listeners) == 0;
++  if (db_list != NULL &&
++      db_list->data == default_db &&
++      db_list->next == NULL)
++    return gconf_listeners_count (default_db->listeners) == 0;
++
++  return FALSE;
+ }
  
-       /* Drop any listeners whose clients are gone. */
+ void
