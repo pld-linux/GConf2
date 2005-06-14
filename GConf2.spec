@@ -1,4 +1,4 @@
-%bcond_without	static_libs	# don't build static libraries
+%bcond_without	static	# don't build static libraries
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
@@ -96,7 +96,7 @@ rm -f acinclude.m4
 %{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
-	%{!?with_static_libs:--disable-static} \
+	%{!?with_static:--disable-static} \
 %ifarch ppc
 	--disable-gtk-doc
 %else
@@ -148,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/*.pc
 %{_gtkdocdir}/gconf
 
-%if %{with static_libs}
+%if %{with static}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
