@@ -96,7 +96,7 @@ rm -f acinclude.m4
 %{__automake}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
-	%{!?with static_libs:--disable-static} \
+	%{!?with_static_libs:--disable-static} \
 %ifarch ppc
 	--disable-gtk-doc
 %else
