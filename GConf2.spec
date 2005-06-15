@@ -1,4 +1,6 @@
+# Conditional build:
 %bcond_without	static_libs	# don't build static libraries
+#
 Summary:	GNOME2 configuration database system
 Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
