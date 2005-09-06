@@ -1,4 +1,7 @@
 #
+# TODO:
+# - install evoldap.scheme ?
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
 #
@@ -7,23 +10,23 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
-Version:	2.10.1
+Version:	2.12.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.10/GConf-%{version}.tar.bz2
-# Source0-md5:	c411bd6e9e25362ea613bb9a084be904
+Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.12/GConf-%{version}.tar.bz2
+# Source0-md5:	e674d838922a9e9de0cee9fd2ef1ea0c
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.12.1
+BuildRequires:	ORBit2-devel >= 1:2.12.3
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	libxml2-devel >= 1:2.6.21
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
@@ -52,9 +55,9 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.12.1
+Requires:	ORBit2-devel >= 1:2.12.3
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.19
+Requires:	libxml2-devel >= 1:2.6.21
 Obsoletes:	libGConf2-devel
 
 %description devel
