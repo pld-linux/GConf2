@@ -11,7 +11,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.12.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.12/GConf-%{version}.tar.bz2
@@ -24,7 +24,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.8.3
-BuildRequires:	gtk-doc >= 1.3
+BuildRequires:	gtk-doc >= 1.4-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.21
 BuildRequires:	perl-base
