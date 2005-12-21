@@ -16,6 +16,7 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.12/GConf-%{version}.tar.bz2
 # Source0-md5:	247110de013ed24b17cf4191eb6daec5
+Source1:	%{name}-merge-tree.xinit
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
@@ -111,10 +112,12 @@ rm -f acinclude.m4
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install -d $RPM_BUILD_ROOT%{_sysconfdir}{/gconf/schemas,/X11/xinit/xinitrc.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d/GConf2-merge-tree
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
@@ -139,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/lib*.so
 %{_sysconfdir}/gconf
+%attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/*
 %{_datadir}/sgml/gconf
 %{_mandir}/man1/*
 
