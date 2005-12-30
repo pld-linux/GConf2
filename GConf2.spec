@@ -57,6 +57,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolviment
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.12.3
+Requires:	automake
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.21
 Requires:	pkgconfig
