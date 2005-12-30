@@ -59,6 +59,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.12.3
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.21
+Requires:	pkgconfig
 Obsoletes:	libGConf2-devel
 
 %description devel
