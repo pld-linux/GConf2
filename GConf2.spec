@@ -1,4 +1,7 @@
 #
+# TODO:
+# - update documentation to follow changes introduced in Patch0
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
 #
