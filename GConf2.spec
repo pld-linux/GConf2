@@ -1,8 +1,4 @@
 #
-# TODO:
-# - separate evoldap module (requires LDAP libs)?
-# - package evoldap.schema?
-#
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
 #
@@ -88,13 +84,35 @@ Biblioteki statyczne GConf2.
 %description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com gconf
 
+%package backend-evoldap
+Summary:	Evolution Data Sources LDAP backend for GConf
+Summary(pl):	Backend LDAP ¼róde³ danych Evolution dla GConfa
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description backend-evoldap
+This is a special-purpose backend for GConf which enables default mail
+accounts, addressbooks and calendars for Evolution to be configured
+using each user's LDAP entry. By setting each user's mail address,
+incoming/outgoing mail server addresses and addressbook/calendar
+addresses in the user's LDAP entry, Evolution will be automatically
+configured to use these addresses.
+
+%description backend-evoldap -l pl
+To jest backend GConfa specjalnego przeznaczenia, pozwalaj±cy na
+konfigurowanie domy¶lnych kont pocztowych, ksi±¿ek adresowych i
+kalendarzy dla Evolution przy u¿yciu wpisu LDAP dla ka¿dego
+u¿ytkownika. Poprzez ustawienie ka¿demu u¿ytkownikowi adres pocztowy,
+adresy serwerów poczty przychodz±cej/wychodz±cej oraz adresy ksi±¿ki
+adresowej i kalendarza w jego wpisie LDAP, Evolution zostanie
+automatycznie skonfigurowane do u¿ywania tych adresów.
+
 %prep
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
 
 %build
-rm -f acinclude.m4
 %{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
@@ -102,13 +120,9 @@ rm -f acinclude.m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static} \
-%ifarch ppc
-	--disable-gtk-doc
-%else
-	--enable-gtk-doc
-%endif
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
@@ -142,9 +156,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gconfd-2
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/GConf2
-%attr(755,root,root) %{_libdir}/GConf2/lib*.so
-%{_sysconfdir}/gconf
+%attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
+%attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
+%dir %{_sysconfdir}/gconf
+%dir %{_sysconfdir}/gconf/2
+%{_sysconfdir}/gconf/gconf.xml.*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/path
+%dir %{_sysconfdir}/gconf/schemas
 %attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/*
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
 %{_mandir}/man1/*
 
@@ -163,3 +184,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %endif
+
+%files backend-evoldap
+%defattr(644,root,root,755)
+%doc backends/README.evoldap
+%attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-evoldap.so
+%{_datadir}/GConf/schema/evoldap.schema
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/2/evoldap.conf
