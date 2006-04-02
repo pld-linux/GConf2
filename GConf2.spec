@@ -1,6 +1,7 @@
 #
 # TODO:
-# - install evoldap.scheme ?
+# - separate evoldap module (requires LDAP libs)?
+# - package evoldap.schema?
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
@@ -28,6 +29,7 @@ BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	gtk-doc >= 1.4-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.21
+BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
