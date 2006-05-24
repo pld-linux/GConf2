@@ -11,7 +11,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.14.0
-Release:	1
+Release:	4
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.14/GConf-%{version}.tar.bz2
@@ -24,6 +24,7 @@ BuildRequires:	ORBit2-devel >= 1:2.13.2
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.10.2
 BuildRequires:	gtk+2-devel >= 2:2.8.3
 BuildRequires:	gtk-doc >= 1.4-2
 BuildRequires:	libtool
@@ -33,6 +34,8 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
+Requires:	ORBit2 >= 1:2.14.0
+Requires:	glib2 >= 1:2.10.2
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,7 +60,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.12.3
+Requires:	ORBit2-devel >= 1:2.14.0
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.21
 Obsoletes:	libGConf2-devel
