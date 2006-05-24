@@ -141,7 +141,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}{/gconf/schemas,/X11/xinit/xinitrc.d}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d/GConf2-merge-tree
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{no,zh_HK}
 
 %find_lang %{name}
 
