@@ -11,7 +11,7 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.14.0
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.14/GConf-%{version}.tar.bz2
@@ -20,22 +20,22 @@ Source1:	%{name}-merge-tree.xinit
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.13.2
+BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.10.2
-BuildRequires:	gtk+2-devel >= 2:2.8.3
+BuildRequires:	glib2-devel >= 1:2.11.2
+BuildRequires:	gtk+2-devel >= 2:2.9.2
 BuildRequires:	gtk-doc >= 1.4-2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.21
+BuildRequires:	libxml2-devel >= 1:2.6.25
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	ORBit2 >= 1:2.14.0
-Requires:	glib2 >= 1:2.10.2
+Requires:	glib2 >= 1:2.11.2
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,7 +62,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.0
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.21
+Requires:	libxml2-devel >= 1:2.6.25
 Obsoletes:	libGConf2-devel
 
 %description devel
@@ -119,6 +119,7 @@ automatycznie skonfigurowane do u¿ywania tych adresów.
 %patch1 -p1
 
 %build
+%{__gtkdocize}
 %{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
@@ -141,7 +142,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}{/gconf/schemas,/X11/xinit/xinitrc.d}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d/GConf2-merge-tree
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{no,zh_HK}
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
 
