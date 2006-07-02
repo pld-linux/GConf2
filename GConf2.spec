@@ -36,6 +36,7 @@ BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	ORBit2 >= 1:2.14.0
 Requires:	glib2 >= 1:2.11.2
+Requires:	xinitrc-ng
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
