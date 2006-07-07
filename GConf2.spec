@@ -113,6 +113,18 @@ adresy serwerów poczty przychodz±cej/wychodz±cej oraz adresy ksi±¿ki
 adresowej i kalendarza w jego wpisie LDAP, Evolution zostanie
 automatycznie skonfigurowane do u¿ywania tych adresów.
 
+%package xinitrc
+Summary:	GConf xinitrc scripts
+Summary(pl):	Skrypty xinitrc GConfa
+Group:		X11
+Requires:	xinitrc
+
+%description xinitrc
+This is a script for xinit-rc, which monitors users .gconf dir, merging it into single tree if neceserry or creates a new default one.
+
+%description xinitrc -l pl
+To jest skrypt dla xinit-rc, który monitoruje katalog .gconf u¿ytkowników, spajaj±c go w pojedyncze drzewo, gdy to koniecznie, lub tworz±c nowe, domy¶lne.
+
 %prep
 %setup -q -n GConf-%{version}
 %patch0 -p1
@@ -170,7 +182,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/gconf.xml.*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/path
 %dir %{_sysconfdir}/gconf/schemas
-%attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/*
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
@@ -198,3 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-evoldap.so
 %{_datadir}/GConf/schema/evoldap.schema
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/2/evoldap.conf
+
+%files xinitrc
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/*
