@@ -11,7 +11,7 @@ Summary(pt_BR):	Sistema de ConfiguraГЦo do GNOME 2
 Summary(ru):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.14.0
-Release:	5
+Release:	6
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.14/GConf-%{version}.tar.bz2
