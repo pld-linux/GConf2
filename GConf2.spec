@@ -117,6 +117,7 @@ automatycznie skonfigurowane do u¿ywania tych adresów.
 Summary:	GConf xinitrc scripts
 Summary(pl):	Skrypty xinitrc GConfa
 Group:		X11
+Requires:	%{name} = %{version}-%{release}
 Requires:	xinitrc
 
 %description xinitrc
