@@ -11,12 +11,11 @@ Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
 Version:	2.14.0
-Release:	6
+Release:	7
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.14/GConf-%{version}.tar.bz2
 # Source0-md5:	d07c2efcaf477cf34225c604a04b6271
-Source1:	%{name}-merge-tree.xinit
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.gnome.org/
@@ -24,18 +23,20 @@ BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.11.2
-BuildRequires:	gtk+2-devel >= 2:2.9.2
-BuildRequires:	gtk-doc >= 1.4-2
+BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.25
+BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
+Requires(post):	GConf2 >= 2.14.0
 Requires:	ORBit2 >= 1:2.14.0
-Requires:	glib2 >= 1:2.11.2
+Requires:	glib2 >= 1:2.12.0
+Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,7 +63,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.0
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.25
+Requires:	libxml2-devel >= 1:2.6.26
 Obsoletes:	libGConf2-devel
 
 %description devel
@@ -113,19 +114,6 @@ adresy serwerów poczty przychodz±cej/wychodz±cej oraz adresy ksi±¿ki
 adresowej i kalendarza w jego wpisie LDAP, Evolution zostanie
 automatycznie skonfigurowane do u¿ywania tych adresów.
 
-%package xinitrc
-Summary:	GConf xinitrc scripts
-Summary(pl):	Skrypty xinitrc GConfa
-Group:		X11
-Requires:	%{name} = %{version}-%{release}
-Requires:	xinitrc
-
-%description xinitrc
-This is a script for xinit-rc, which monitors users .gconf dir, merging it into single tree if neceserry or creates a new default one.
-
-%description xinitrc -l pl
-To jest skrypt dla xinit-rc, który monitoruje katalog .gconf u¿ytkowników, spajaj±c go w pojedyncze drzewo, gdy to koniecznie, lub tworz±c nowe, domy¶lne.
-
 %prep
 %setup -q -n GConf-%{version}
 %patch0 -p1
@@ -139,6 +127,7 @@ To jest skrypt dla xinit-rc, który monitoruje katalog .gconf u¿ytkowników, spaja
 %{__autoheader}
 %{__autoconf}
 %{__automake}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	%{!?with_static_libs:--disable-static} \
 	--enable-gtk-doc \
@@ -148,12 +137,10 @@ To jest skrypt dla xinit-rc, który monitoruje katalog .gconf u¿ytkowników, spaja
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}{/gconf/schemas,/X11/xinit/xinitrc.d}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d/GConf2-merge-tree
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
@@ -165,7 +152,20 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
+umask 022
+for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/gconf.xml.defaults ;
+    do
+    GCONF_TREE=$GCONF_DIR/%gconf-tree.xml
+    if [ ! -f "$GCONF_TREE" ]; then
+	gconf-merge-tree "$GCONF_DIR"
+        chmod 644 "$GCONF_TREE"
+        find "$GCONF_DIR" -mindepth 1 -maxdepth 1 -type d -exec rm -rf \{\} \;
+        rm -f "$GCONF_DIR/%gconf.xml"
+    fi
+done
+	    
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
@@ -210,7 +210,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-evoldap.so
 %{_datadir}/GConf/schema/evoldap.schema
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/2/evoldap.conf
-
-%files xinitrc
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/*
