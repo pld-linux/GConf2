@@ -10,33 +10,33 @@ Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR):	Sistema de Configuração do GNOME 2
 Summary(ru):	óÉÓÔÅÍÁ ËÏÎÆÉÇÕÒÁÃÉÉ GNOME 2
 Name:		GConf2
-Version:	2.14.0
-Release:	8
+Version:	2.16.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.14/GConf-%{version}.tar.bz2
-# Source0-md5:	d07c2efcaf477cf34225c604a04b6271
+Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.16/GConf-%{version}.tar.bz2
+# Source0-md5:	b1a202f36661c0d9c87f8fe27a28bd52
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.14.0
+BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.0
-BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	glib2-devel >= 1:2.12.4
+BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	gtk-doc >= 1.7
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	GConf2 >= 2.14.0
-Requires:	ORBit2 >= 1:2.14.0
-Requires:	glib2 >= 1:2.12.0
+Requires:	ORBit2 >= 1:2.14.3
+Requires:	glib2 >= 1:2.12.4
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -62,7 +62,7 @@ Summary(pl):	Pliki nag³ówkowe GConf2
 Summary(pt_BR):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.0
+Requires:	ORBit2-devel >= 1:2.14.3
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.26
 Obsoletes:	libGConf2-devel
@@ -124,6 +124,7 @@ automatycznie skonfigurowane do u¿ywania tych adresów.
 %build
 %{__gtkdocize}
 %{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
@@ -142,8 +143,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
 
