@@ -11,7 +11,7 @@ Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME 2
 Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… GNOME 2
 Name:		GConf2
 Version:	2.16.0
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.16/GConf-%{version}.tar.bz2
@@ -55,6 +55,18 @@ wykryÊ brak GNOME2 i skompilowaÊ tylko wersjÍ podstawow± GConf2.
 
 %description -l pt_BR
 Gconf2 È o sistema de banco de dados de configuraÁ„o do GNOME2.
+
+%package apidocs
+Summary:	GConf2 API documentation
+Summary(pl):	Dokumentacja API GConf2
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+GConf2 API documentation.
+
+%description apidocs -l pl
+Dokumentacja API GConf2.
 
 %package devel
 Summary:	GConf2 includes, etc
@@ -188,6 +200,10 @@ done
 %{_datadir}/sgml/gconf
 %{_mandir}/man1/*
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gconf
+
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
@@ -196,7 +212,6 @@ done
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/gconf
 
 %if %{with static_libs}
 %files static
