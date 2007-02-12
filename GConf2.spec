@@ -6,9 +6,9 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	GNOME2 configuration database system
-Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
-Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME 2
-Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… GNOME 2
+Summary(pl.UTF-8):   System konfiguracyjnej bazy danych dla GNOME 2
+Summary(pt_BR.UTF-8):   Sistema de Configura√ß√£o do GNOME 2
+Summary(ru.UTF-8):   –°–∏—Å—Ç–µ–º–∞ –∫–æ–Ω—Ñ–∏–≥—É—Ä–∞—Ü–∏–∏ GNOME 2
 Name:		GConf2
 Version:	2.16.0
 Release:	3
@@ -47,31 +47,31 @@ Windows registry but lots better. :-) It's being written for the
 GNOME2 desktop but does not require GNOME2; configure should notice if
 GNOME2 is not installed and compile the basic GConf2 library anyway.
 
-%description -l pl
+%description -l pl.UTF-8
 GConf2 jest systemem konfiguracyjnej bazy danych, funkcjonalnie
 podobnej do rejestru Windows, ale o wiele lepszej :-). Jest pisana dla
 desktopu GNOME2, ale nie wymaga GNOME2; skrypt configure powinien
-wykryÊ brak GNOME2 i skompilowaÊ tylko wersjÍ podstawow± GConf2.
+wykryƒá brak GNOME2 i skompilowaƒá tylko wersjƒô podstawowƒÖ GConf2.
 
-%description -l pt_BR
-Gconf2 È o sistema de banco de dados de configuraÁ„o do GNOME2.
+%description -l pt_BR.UTF-8
+Gconf2 √© o sistema de banco de dados de configura√ß√£o do GNOME2.
 
 %package apidocs
 Summary:	GConf2 API documentation
-Summary(pl):	Dokumentacja API GConf2
+Summary(pl.UTF-8):   Dokumentacja API GConf2
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 GConf2 API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API GConf2.
 
 %package devel
 Summary:	GConf2 includes, etc
-Summary(pl):	Pliki nag≥Ûwkowe GConf2
-Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2 - arquivos para desenvolvimento
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe GConf2
+Summary(pt_BR.UTF-8):   Sistema de Configura√ß√£o do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.3
@@ -82,31 +82,31 @@ Obsoletes:	libGConf2-devel
 %description devel
 GConf2 includes etc.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe GConf2.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe GConf2.
 
-%description devel -l pt_BR
-Sistema de ConfiguraÁ„o do GNOME2 - arquivos para desenvolvimento.
+%description devel -l pt_BR.UTF-8
+Sistema de Configura√ß√£o do GNOME2 - arquivos para desenvolvimento.
 
 %package static
 Summary:	GConf2 static libraries
-Summary(pl):	Biblioteki statyczne GConf2
-Summary(pt_BR):	Bibliotecas est·ticas para desenvolvimento com gconf2
+Summary(pl.UTF-8):   Biblioteki statyczne GConf2
+Summary(pt_BR.UTF-8):   Bibliotecas est√°ticas para desenvolvimento com gconf2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GConf2 static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne GConf2.
 
-%description static -l pt_BR
-Bibliotecas est·ticas para desenvolvimento com gconf
+%description static -l pt_BR.UTF-8
+Bibliotecas est√°ticas para desenvolvimento com gconf
 
 %package backend-evoldap
 Summary:	Evolution Data Sources LDAP backend for GConf
-Summary(pl):	Backend LDAP ºrÛde≥ danych Evolution dla GConfa
+Summary(pl.UTF-8):   Backend LDAP ≈∫r√≥de≈Ç danych Evolution dla GConfa
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -118,14 +118,14 @@ incoming/outgoing mail server addresses and addressbook/calendar
 addresses in the user's LDAP entry, Evolution will be automatically
 configured to use these addresses.
 
-%description backend-evoldap -l pl
-To jest backend GConfa specjalnego przeznaczenia, pozwalaj±cy na
-konfigurowanie domy∂lnych kont pocztowych, ksi±øek adresowych i
-kalendarzy dla Evolution przy uøyciu wpisu LDAP dla kaødego
-uøytkownika. Poprzez ustawienie kaødemu uøytkownikowi adres pocztowy,
-adresy serwerÛw poczty przychodz±cej/wychodz±cej oraz adresy ksi±øki
+%description backend-evoldap -l pl.UTF-8
+To jest backend GConfa specjalnego przeznaczenia, pozwalajƒÖcy na
+konfigurowanie domy≈õlnych kont pocztowych, ksiƒÖ≈ºek adresowych i
+kalendarzy dla Evolution przy u≈ºyciu wpisu LDAP dla ka≈ºdego
+u≈ºytkownika. Poprzez ustawienie ka≈ºdemu u≈ºytkownikowi adres pocztowy,
+adresy serwer√≥w poczty przychodzƒÖcej/wychodzƒÖcej oraz adresy ksiƒÖ≈ºki
 adresowej i kalendarza w jego wpisie LDAP, Evolution zostanie
-automatycznie skonfigurowane do uøywania tych adresÛw.
+automatycznie skonfigurowane do u≈ºywania tych adres√≥w.
 
 %prep
 %setup -q -n GConf-%{version}
