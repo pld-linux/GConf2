@@ -6,9 +6,9 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	GNOME2 configuration database system
-Summary(pl.UTF-8):   System konfiguracyjnej bazy danych dla GNOME 2
-Summary(pt_BR.UTF-8):   Sistema de Configuração do GNOME 2
-Summary(ru.UTF-8):   Система конфигурации GNOME 2
+Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
+Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
+Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.16.0
 Release:	3
@@ -58,7 +58,7 @@ Gconf2 é o sistema de banco de dados de configuração do GNOME2.
 
 %package apidocs
 Summary:	GConf2 API documentation
-Summary(pl.UTF-8):   Dokumentacja API GConf2
+Summary(pl.UTF-8):	Dokumentacja API GConf2
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -70,8 +70,8 @@ Dokumentacja API GConf2.
 
 %package devel
 Summary:	GConf2 includes, etc
-Summary(pl.UTF-8):   Pliki nagłówkowe GConf2
-Summary(pt_BR.UTF-8):   Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
+Summary(pl.UTF-8):	Pliki nagłówkowe GConf2
+Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.3
@@ -90,8 +90,8 @@ Sistema de Configuração do GNOME2 - arquivos para desenvolvimento.
 
 %package static
 Summary:	GConf2 static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne GConf2
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com gconf2
+Summary(pl.UTF-8):	Biblioteki statyczne GConf2
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com gconf2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -106,7 +106,7 @@ Bibliotecas estáticas para desenvolvimento com gconf
 
 %package backend-evoldap
 Summary:	Evolution Data Sources LDAP backend for GConf
-Summary(pl.UTF-8):   Backend LDAP źródeł danych Evolution dla GConfa
+Summary(pl.UTF-8):	Backend LDAP źródeł danych Evolution dla GConfa
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
