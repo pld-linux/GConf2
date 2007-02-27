@@ -10,33 +10,33 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.16.0
-Release:	3
+Version:	2.16.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.16/GConf-%{version}.tar.bz2
-# Source0-md5:	b1a202f36661c0d9c87f8fe27a28bd52
+# Source0-md5:	60d2da294195abb8cac81b6ecceb7e5e
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.14.3
+BuildRequires:	ORBit2-devel >= 1:2.14.7
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.4
-BuildRequires:	gtk+2-devel >= 2:2.10.6
-BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	glib2-devel >= 1:2.12.9
+BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.26
+BuildRequires:	libxml2-devel >= 1:2.6.27
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	GConf2 >= 2.14.0
-Requires:	ORBit2 >= 1:2.14.3
-Requires:	glib2 >= 1:2.12.4
+Requires:	ORBit2 >= 1:2.14.7
+Requires:	glib2 >= 1:2.12.9
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -74,9 +74,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe GConf2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.3
+Requires:	ORBit2-devel >= 1:2.14.7
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.26
+Requires:	libxml2-devel >= 1:2.6.27
 Obsoletes:	libGConf2-devel
 
 %description devel
