@@ -34,7 +34,6 @@ BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post):	GConf2
 Requires:	ORBit2 >= 1:2.14.7
 Requires:	glib2 >= 1:2.12.9
 Obsoletes:	GConf2-xinitrc
