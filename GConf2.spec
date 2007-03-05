@@ -10,12 +10,12 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.18.0
+Version:	2.18.0.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.18/GConf-%{version}.tar.bz2
-# Source0-md5:	ddb9633fa659fadbb8bb1563a1d32afb
+# Source0-md5:	aa0e0a0729fb021bab72b4166fd392f9
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
