@@ -103,6 +103,18 @@ Biblioteki statyczne GConf2.
 %description static -l pt_BR.UTF-8
 Bibliotecas estáticas para desenvolvimento com gconf
 
+%package examples
+Summary:	GConf2 - example programs
+Summary(pl.UTF-8):	GConf2 - przykładowe programy
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description examples
+GConf2 - example programs.
+
+%description examples -l pl.UTF-8
+GConf2 - przykładowe programy.
+
 %package backend-evoldap
 Summary:	Evolution Data Sources LDAP backend for GConf
 Summary(pl.UTF-8):	Backend LDAP źródeł danych Evolution dla GConfa
@@ -150,10 +162,12 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %find_lang %{name}
 
@@ -217,6 +231,10 @@ done
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %endif
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
 
 %files backend-evoldap
 %defattr(644,root,root,755)
