@@ -6,37 +6,36 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	GNOME2 configuration database system
-Summary(pl):	System konfiguracyjnej bazy danych dla GNOME 2
-Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME 2
-Summary(ru):	Û…”‘≈Õ¡ ÀœŒ∆…«’“¡√…… GNOME 2
+Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
+Summary(pt_BR.UTF-8):	Sistema de Configura√ß√£o do GNOME 2
+Summary(ru.UTF-8):	–°–∏—Å—Ç–µ–º–∞ –∫–æ–Ω—Ñ–∏–≥—É—Ä–∞—Ü–∏–∏ GNOME 2
 Name:		GConf2
-Version:	2.16.0
+Version:	2.19.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.16/GConf-%{version}.tar.bz2
-# Source0-md5:	b1a202f36661c0d9c87f8fe27a28bd52
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.19/GConf-%{version}.tar.bz2
+# Source0-md5:	78373f2a461354c7e0b32c0dc9c586b3
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.14.3
+BuildRequires:	ORBit2-devel >= 1:2.14.8
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.4
-BuildRequires:	gtk+2-devel >= 2:2.10.6
-BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	glib2-devel >= 1:2.14.0
+BuildRequires:	gtk+2-devel >= 2:2.10.14
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.26
+BuildRequires:	libxml2-devel >= 1:2.6.29
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post):	GConf2 >= 2.14.0
-Requires:	ORBit2 >= 1:2.14.3
-Requires:	glib2 >= 1:2.12.4
+Requires:	ORBit2 >= 1:2.14.8
+Requires:	glib2 >= 1:2.14.0
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,54 +46,78 @@ Windows registry but lots better. :-) It's being written for the
 GNOME2 desktop but does not require GNOME2; configure should notice if
 GNOME2 is not installed and compile the basic GConf2 library anyway.
 
-%description -l pl
+%description -l pl.UTF-8
 GConf2 jest systemem konfiguracyjnej bazy danych, funkcjonalnie
 podobnej do rejestru Windows, ale o wiele lepszej :-). Jest pisana dla
 desktopu GNOME2, ale nie wymaga GNOME2; skrypt configure powinien
-wykryÊ brak GNOME2 i skompilowaÊ tylko wersjÍ podstawow± GConf2.
+wykryƒá brak GNOME2 i skompilowaƒá tylko wersjƒô podstawowƒÖ GConf2.
 
-%description -l pt_BR
-Gconf2 È o sistema de banco de dados de configuraÁ„o do GNOME2.
+%description -l pt_BR.UTF-8
+Gconf2 √© o sistema de banco de dados de configura√ß√£o do GNOME2.
+
+%package apidocs
+Summary:	GConf2 API documentation
+Summary(pl.UTF-8):	Dokumentacja API GConf2
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+GConf2 API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API GConf2.
 
 %package devel
 Summary:	GConf2 includes, etc
-Summary(pl):	Pliki nag≥Ûwkowe GConf2
-Summary(pt_BR):	Sistema de ConfiguraÁ„o do GNOME2 - arquivos para desenvolvimento
+Summary(pl.UTF-8):	Pliki nag≈Ç√≥wkowe GConf2
+Summary(pt_BR.UTF-8):	Sistema de Configura√ß√£o do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.3
+Requires:	ORBit2-devel >= 1:2.14.8
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.26
+Requires:	libxml2-devel >= 1:2.6.29
 Obsoletes:	libGConf2-devel
 
 %description devel
 GConf2 includes etc.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe GConf2.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe GConf2.
 
-%description devel -l pt_BR
-Sistema de ConfiguraÁ„o do GNOME2 - arquivos para desenvolvimento.
+%description devel -l pt_BR.UTF-8
+Sistema de Configura√ß√£o do GNOME2 - arquivos para desenvolvimento.
 
 %package static
 Summary:	GConf2 static libraries
-Summary(pl):	Biblioteki statyczne GConf2
-Summary(pt_BR):	Bibliotecas est·ticas para desenvolvimento com gconf2
+Summary(pl.UTF-8):	Biblioteki statyczne GConf2
+Summary(pt_BR.UTF-8):	Bibliotecas est√°ticas para desenvolvimento com gconf2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GConf2 static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne GConf2.
 
-%description static -l pt_BR
-Bibliotecas est·ticas para desenvolvimento com gconf
+%description static -l pt_BR.UTF-8
+Bibliotecas est√°ticas para desenvolvimento com gconf
+
+%package examples
+Summary:	GConf2 - example programs
+Summary(pl.UTF-8):	GConf2 - przyk≈Çadowe programy
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description examples
+GConf2 - example programs.
+
+%description examples -l pl.UTF-8
+GConf2 - przyk≈Çadowe programy.
 
 %package backend-evoldap
 Summary:	Evolution Data Sources LDAP backend for GConf
-Summary(pl):	Backend LDAP ºrÛde≥ danych Evolution dla GConfa
+Summary(pl.UTF-8):	Backend LDAP ≈∫r√≥de≈Ç danych Evolution dla GConfa
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -106,14 +129,14 @@ incoming/outgoing mail server addresses and addressbook/calendar
 addresses in the user's LDAP entry, Evolution will be automatically
 configured to use these addresses.
 
-%description backend-evoldap -l pl
-To jest backend GConfa specjalnego przeznaczenia, pozwalaj±cy na
-konfigurowanie domy∂lnych kont pocztowych, ksi±øek adresowych i
-kalendarzy dla Evolution przy uøyciu wpisu LDAP dla kaødego
-uøytkownika. Poprzez ustawienie kaødemu uøytkownikowi adres pocztowy,
-adresy serwerÛw poczty przychodz±cej/wychodz±cej oraz adresy ksi±øki
+%description backend-evoldap -l pl.UTF-8
+To jest backend GConfa specjalnego przeznaczenia, pozwalajƒÖcy na
+konfigurowanie domy≈õlnych kont pocztowych, ksiƒÖ≈ºek adresowych i
+kalendarzy dla Evolution przy u≈ºyciu wpisu LDAP dla ka≈ºdego
+u≈ºytkownika. Poprzez ustawienie ka≈ºdemu u≈ºytkownikowi adres pocztowy,
+adresy serwer√≥w poczty przychodzƒÖcej/wychodzƒÖcej oraz adresy ksiƒÖ≈ºki
 adresowej i kalendarza w jego wpisie LDAP, Evolution zostanie
-automatycznie skonfigurowane do uøywania tych adresÛw.
+automatycznie skonfigurowane do u≈ºywania tych adres√≥w.
 
 %prep
 %setup -q -n GConf-%{version}
@@ -139,10 +162,12 @@ automatycznie skonfigurowane do uøywania tych adresÛw.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %find_lang %{name}
 
@@ -188,6 +213,10 @@ done
 %{_datadir}/sgml/gconf
 %{_mandir}/man1/*
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gconf
+
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
@@ -196,13 +225,16 @@ done
 %{_includedir}/gconf2
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/gconf
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %endif
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
 
 %files backend-evoldap
 %defattr(644,root,root,755)
