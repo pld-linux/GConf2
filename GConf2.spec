@@ -11,7 +11,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.18.0.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.18/GConf-%{version}.tar.bz2
@@ -35,6 +35,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	ORBit2 >= 1:2.14.7
+Requires:	findutils
 Requires:	glib2 >= 1:2.12.9
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
