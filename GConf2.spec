@@ -34,8 +34,8 @@ BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
+Requires(post):	findutils
 Requires:	ORBit2 >= 1:2.14.7
-Requires:	findutils
 Requires:	glib2 >= 1:2.12.9
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
@@ -177,7 +177,7 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
         rm -f "$GCONF_DIR/%gconf.xml"
     fi
 done
-	    
+
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
