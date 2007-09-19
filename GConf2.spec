@@ -10,33 +10,33 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.18.0.1
-Release:	2
+Version:	2.20.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/GConf/2.18/GConf-%{version}.tar.bz2
-# Source0-md5:	aa0e0a0729fb021bab72b4166fd392f9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.20/GConf-%{version}.tar.bz2
+# Source0-md5:	a6d82dee79df11b6e38b19cb42197d32
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 1:2.14.7
+BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.9
-BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	glib2-devel >= 1:2.14.1
+BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	openldap-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
-Requires:	ORBit2 >= 1:2.14.7
-Requires:	glib2 >= 1:2.12.9
+Requires:	ORBit2 >= 1:2.14.9
+Requires:	glib2 >= 1:2.14.1
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -74,9 +74,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe GConf2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.7
+Requires:	ORBit2-devel >= 1:2.14.9
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.27
+Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
 %description devel
@@ -103,6 +103,18 @@ Biblioteki statyczne GConf2.
 
 %description static -l pt_BR.UTF-8
 Bibliotecas estáticas para desenvolvimento com gconf
+
+%package examples
+Summary:	GConf2 - example programs
+Summary(pl.UTF-8):	GConf2 - przykładowe programy
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description examples
+GConf2 - example programs.
+
+%description examples -l pl.UTF-8
+GConf2 - przykładowe programy.
 
 %package backend-evoldap
 Summary:	Evolution Data Sources LDAP backend for GConf
@@ -151,10 +163,12 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/schemas}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %find_lang %{name}
 
@@ -177,7 +191,7 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
         rm -f "$GCONF_DIR/%gconf.xml"
     fi
 done
-
+	    
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
@@ -218,6 +232,10 @@ done
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %endif
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
 
 %files backend-evoldap
 %defattr(644,root,root,755)
