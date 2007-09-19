@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.20.0
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.20/GConf-%{version}.tar.bz2
 # Source0-md5:	a6d82dee79df11b6e38b19cb42197d32
@@ -197,10 +197,11 @@ done
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%attr(755,root,root) %{_bindir}/gconf*
+%attr(755,root,root) %{_bindir}/gconf-merge-tree
+%attr(755,root,root) %{_bindir}/gconftool-2
 %attr(755,root,root) %{_libdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libdir}/gconfd-2
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgconf-2.so.*.*.*
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
@@ -212,7 +213,7 @@ done
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
-%{_mandir}/man1/*
+%{_mandir}/man1/gconftool-2.1*
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -221,16 +222,16 @@ done
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog TODO
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libgconf-2.so
+%{_libdir}/libgconf-2.la
 %{_includedir}/gconf2
-%{_aclocaldir}/*.m4
-%{_pkgconfigdir}/*.pc
+%{_aclocaldir}/gconf-2.m4
+%{_pkgconfigdir}/gconf-2.0.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgconf-2.a
 %endif
 
 %files examples
