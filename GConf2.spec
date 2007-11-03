@@ -30,7 +30,7 @@ BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.30
-BuildRequires:	openldap-devel
+BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
