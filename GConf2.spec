@@ -10,19 +10,19 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.20.1
-Release:	2
+Version:	2.21.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.20/GConf-%{version}.tar.bz2
-# Source0-md5:	646fc896c6282a8f103365af0fa2e303
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.21/GConf-%{version}.tar.bz2
+# Source0-md5:	b3c031822fc9e3fb49fa92c8f6f996c6
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.7
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.1
 BuildRequires:	gtk+2-devel >= 2:2.12.0
@@ -77,7 +77,6 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenv
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
-Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
@@ -171,6 +170,7 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gco
 	DESTDIR=$RPM_BUILD_ROOT
 
 cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
 	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
@@ -195,7 +195,7 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
         rm -f "$GCONF_DIR/%gconf.xml"
     fi
 done
-	    
+
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
@@ -206,6 +206,7 @@ done
 %attr(755,root,root) %{_libdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libdir}/gconfd-2
 %attr(755,root,root) %{_libdir}/libgconf-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgconf-2.so.4
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
