@@ -1,0 +1,11 @@
+--- GConf-2.21.1/gconf-2.0.pc.in~	2008-01-16 12:57:32.000000000 +0100
++++ GConf-2.21.1/gconf-2.0.pc.in	2008-01-16 17:47:19.498644453 +0100
+@@ -8,7 +8,7 @@
+ Name: gconf
+ Description: GNOME Config System.
+ Version: @VERSION@
+-Requires: glib
++Requires: glib-2.0
+ Requires.private: ORBit-2.0
+ Libs: -L${libdir} -lgconf-@MAJOR_VERSION@
+ Cflags: -I${includedir}/gconf@MAJOR_VERSION@
