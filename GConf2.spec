@@ -19,6 +19,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.21/GConf-%{version}.tar.
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
+Patch3:		%{name}-glib.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
@@ -145,6 +146,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__gtkdocize}
