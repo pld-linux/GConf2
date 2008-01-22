@@ -10,22 +10,21 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.21.1
+Version:	2.21.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.21/GConf-%{version}.tar.bz2
-# Source0-md5:	b3c031822fc9e3fb49fa92c8f6f996c6
+# Source0-md5:	646e8c5168fc40bb2f7580354944c399
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
-Patch3:		%{name}-glib.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.14.1
+BuildRequires:	glib2-devel >= 1:2.15.3
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.2
@@ -37,7 +36,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.14.1
+Requires:	glib2 >= 1:2.15.3
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 # sr@Latn vs. sr@latin
@@ -146,7 +145,6 @@ automatycznie skonfigurowane do używania tych adresów.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__gtkdocize}
