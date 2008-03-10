@@ -1,0 +1,41 @@
+Index: gconf/gconf/gconftool.c
+===================================================================
+RCS file: /cvs/gnome/gconf/gconf/gconftool.c,v
+retrieving revision 1.102
+diff -d -u -p -U10 -r1.102 gconftool.c
+--- gconf/gconf/gconftool.c	3 Jan 2006 17:05:28 -0000	1.102
++++ gconf/gconf/gconftool.c	1 Feb 2006 18:34:36 -0000
+@@ -881,29 +881,33 @@ main (int argc, char** argv)
+   if (makefile_install_mode)
+     {
+       gint retval;
+ 
+       umask (022);
+       retval = do_makefile_install (conf, args, FALSE);
+       
+       gconf_engine_unref (conf);
+ 
++      g_spawn_command_line_sync ("/usr/bin/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
++
+       return retval;
+     }
+ 
+   if (makefile_uninstall_mode)
+     {
+       gint retval;
+ 
+       umask (022);
+       retval = do_makefile_install (conf, args, TRUE);
+       
+       gconf_engine_unref (conf);
++
++      g_spawn_command_line_sync ("/usr/bin/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
+ 
+       return retval;
+     }
+ 
+   if (break_key_mode)
+     {
+       gint retval = do_break_key(conf, args);
+ 
+       gconf_engine_unref(conf);
