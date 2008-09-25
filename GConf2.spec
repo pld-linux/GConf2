@@ -10,21 +10,22 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.22.0
+Version:	2.24.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.22/GConf-%{version}.tar.bz2
-# Source0-md5:	a56c043afeb1052abaf45407409b0331
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.24/GConf-%{version}.tar.bz2
+# Source0-md5:	4971d96f5ba94fe4a69396267bd5afe8
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
+BuildRequires:	PolicyKit-devel >= 0.7
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.15.6
+BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.2
@@ -36,7 +37,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.15.6
+Requires:	glib2 >= 1:2.18.0
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 # sr@Latn vs. sr@latin
@@ -172,8 +173,6 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gco
 cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
@@ -203,18 +202,23 @@ done
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/gconf-merge-tree
 %attr(755,root,root) %{_bindir}/gconftool-2
-%attr(755,root,root) %{_libdir}/gconf-sanity-check-2
-%attr(755,root,root) %{_libdir}/gconfd-2
+%attr(755,root,root) %{_libexecdir}/gconf-defaults-mechanism
+%attr(755,root,root) %{_libexecdir}/gconf-sanity-check-2
+%attr(755,root,root) %{_libexecdir}/gconfd-2
 %attr(755,root,root) %{_libdir}/libgconf-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgconf-2.so.4
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
+%{_sysconfdir}/dbus-1/system.d/org.gnome.GConf.Defaults.conf
 %dir %{_sysconfdir}/gconf
 %dir %{_sysconfdir}/gconf/2
 %{_sysconfdir}/gconf/gconf.xml.*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/path
 %dir %{_sysconfdir}/gconf/schemas
+%{_datadir}/PolicyKit/policy/org.gnome.gconf.defaults.policy
+%{_datadir}/dbus-1/services/org.gnome.GConf.service
+%{_datadir}/dbus-1/system-services/org.gnome.GConf.Defaults.service
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
