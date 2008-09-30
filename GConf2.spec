@@ -157,6 +157,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %{__autoconf}
 %{__automake}
 %configure \
+	POLKIT_POLICY_FILE_VALIDATE=/usr/bin/polkit-policy-file-validate \
 	%{!?with_static_libs:--disable-static} \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
