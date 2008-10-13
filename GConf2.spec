@@ -21,7 +21,7 @@ Patch1:		%{name}-path.patch
 Patch2:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
-BuildRequires:	PolicyKit-devel >= 0.7
+BuildRequires:	PolicyKit-devel >= 0.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
