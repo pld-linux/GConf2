@@ -11,7 +11,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.24.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.24/GConf-%{version}.tar.bz2
@@ -36,8 +36,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
-Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.18.0
+Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 # sr@Latn vs. sr@latin
@@ -59,6 +58,58 @@ wykryć brak GNOME2 i skompilować tylko wersję podstawową GConf2.
 %description -l pt_BR.UTF-8
 Gconf2 é o sistema de banco de dados de configuração do GNOME2.
 
+%package libs
+Summary:	GConf2 shared library
+Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
+Group:		Libraries
+Requires:	ORBit2 >= 1:2.14.9
+Requires:	glib2 >= 1:2.18.0
+Conflicts:	GConf2 < 2.24.0-2
+
+%description libs
+GConf2 shared library and gconftool utility (used both for
+configuration management and development purposes).
+
+%description libs -l pl.UTF-8
+Biblioteka współdzielona GConf2 oraz narzędzie gconftool (używane
+zarówno przy zarządzaniu konfiguracją, jak i tworzeniu
+oprogramowania).
+
+%package devel
+Summary:	Header files for GConf2 library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GConf2
+Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
+Group:		Development/Libraries
+Requires:	%{name}-libs = %{version}-%{release}
+Requires:	ORBit2-devel >= 1:2.14.9
+Requires:	libxml2-devel >= 1:2.6.30
+Obsoletes:	libGConf2-devel
+
+%description devel
+Header files for GConf2 library.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki GConf2.
+
+%description devel -l pt_BR.UTF-8
+Sistema de Configuração do GNOME2 - arquivos para desenvolvimento.
+
+%package static
+Summary:	GConf2 static libraries
+Summary(pl.UTF-8):	Biblioteki statyczne GConf2
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com gconf2
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+GConf2 static libraries.
+
+%description static -l pl.UTF-8
+Biblioteki statyczne GConf2.
+
+%description static -l pt_BR.UTF-8
+Bibliotecas estáticas para desenvolvimento com gconf
+
 %package apidocs
 Summary:	GConf2 API documentation
 Summary(pl.UTF-8):	Dokumentacja API GConf2
@@ -71,45 +122,10 @@ GConf2 API documentation.
 %description apidocs -l pl.UTF-8
 Dokumentacja API GConf2.
 
-%package devel
-Summary:	GConf2 includes, etc
-Summary(pl.UTF-8):	Pliki nagłówkowe GConf2
-Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenvolvimento
-Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.9
-Requires:	libxml2-devel >= 1:2.6.30
-Obsoletes:	libGConf2-devel
-
-%description devel
-GConf2 includes etc.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe GConf2.
-
-%description devel -l pt_BR.UTF-8
-Sistema de Configuração do GNOME2 - arquivos para desenvolvimento.
-
-%package static
-Summary:	GConf2 static libraries
-Summary(pl.UTF-8):	Biblioteki statyczne GConf2
-Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com gconf2
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-GConf2 static libraries.
-
-%description static -l pl.UTF-8
-Biblioteki statyczne GConf2.
-
-%description static -l pt_BR.UTF-8
-Bibliotecas estáticas para desenvolvimento com gconf
-
 %package examples
 Summary:	GConf2 - example programs
 Summary(pl.UTF-8):	GConf2 - przykładowe programy
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description examples
@@ -183,7 +199,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 umask 022
 for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/gconf.xml.defaults ;
     do
@@ -196,18 +211,16 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
     fi
 done
 
-%postun	-p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/gconf-merge-tree
-%attr(755,root,root) %{_bindir}/gconftool-2
 %attr(755,root,root) %{_libexecdir}/gconf-defaults-mechanism
 %attr(755,root,root) %{_libexecdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libexecdir}/gconfd-2
-%attr(755,root,root) %{_libdir}/libgconf-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgconf-2.so.4
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
@@ -223,11 +236,13 @@ done
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
-%{_mandir}/man1/gconftool-2.1*
 
-%files apidocs
+%files libs -f %{name}.lang
 %defattr(644,root,root,755)
-%{_gtkdocdir}/gconf
+%attr(755,root,root) %{_libdir}/libgconf-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgconf-2.so.4
+%attr(755,root,root) %{_bindir}/gconftool-2
+%{_mandir}/man1/gconftool-2.1*
 
 %files devel
 %defattr(644,root,root,755)
@@ -243,6 +258,10 @@ done
 %defattr(644,root,root,755)
 %{_libdir}/libgconf-2.a
 %endif
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gconf
 
 %files examples
 %defattr(644,root,root,755)
