@@ -17,8 +17,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.25/GConf-%{version}.tar.bz2
 # Source0-md5:	ea7a861c51d5756b501b6a09140cb5b4
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
-Patch1:		%{name}-path.patch
-Patch2:		%{name}-reload.patch
+Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	PolicyKit-devel >= 0.9
@@ -83,6 +82,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenv
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
+Requires:	dbus-devel >= 1.0.0
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
@@ -162,7 +162,6 @@ automatycznie skonfigurowane do używania tych adresów.
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gtkdocize}
@@ -183,7 +182,7 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/schemas}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/{schemas,gconf.xml.system}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
