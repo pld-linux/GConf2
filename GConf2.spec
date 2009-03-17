@@ -10,25 +10,25 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.24.0
-Release:	2
+Version:	2.26.0
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.24/GConf-%{version}.tar.bz2
-# Source0-md5:	4971d96f5ba94fe4a69396267bd5afe8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.26/GConf-%{version}.tar.bz2
+# Source0-md5:	b010f0de356ea093c6a73778b13de956
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
-Patch1:		%{name}-path.patch
-Patch2:		%{name}-reload.patch
+Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	PolicyKit-devel >= 0.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.18.0
-BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	glib2-devel >= 1:2.19.0
+BuildRequires:	gtk+2-devel >= 2:2.15.0
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	openldap-devel >= 2.4.6
@@ -63,7 +63,7 @@ Summary:	GConf2 shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
 Group:		Libraries
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.18.0
+Requires:	glib2 >= 1:2.19.0
 Conflicts:	GConf2 < 2.24.0-2
 
 %description libs
@@ -82,6 +82,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME2 - arquivos para desenv
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
+Requires:	dbus-devel >= 1.0.0
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
@@ -161,7 +162,6 @@ automatycznie skonfigurowane do używania tych adresów.
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gtkdocize}
@@ -182,7 +182,7 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/schemas}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/{schemas,gconf.xml.system}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
