@@ -10,16 +10,14 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.26.1
-Release:	2
+Version:	2.26.2
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.26/GConf-%{version}.tar.bz2
-# Source0-md5:	1f35137836eec03fa7e901230200a34a
+# Source0-md5:	8b55d58dab13e821e048627aa4f92b8b
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
-# http://bugzilla.gnome.org/show_bug.cgi?id=581880
-Patch2:		%{name}-workaround-bug581880.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	PolicyKit-devel >= 0.9
@@ -164,7 +162,6 @@ automatycznie skonfigurowane do używania tych adresów.
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gtkdocize}
