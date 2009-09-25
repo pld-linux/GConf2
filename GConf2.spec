@@ -10,23 +10,22 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.26.2
+Version:	2.28.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.26/GConf-%{version}.tar.bz2
-# Source0-md5:	8b55d58dab13e821e048627aa4f92b8b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.28/GConf-%{version}.tar.bz2
+# Source0-md5:	ad2aeb9c7d906b274954c51a615caeac
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
-BuildRequires:	PolicyKit-devel >= 0.9
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	glib2-devel >= 1:2.19.0
-BuildRequires:	gtk+2-devel >= 2:2.15.0
+BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
@@ -34,6 +33,7 @@ BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	polkit-devel >= 0.92
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
 Requires:	%{name}-libs = %{version}-%{release}
@@ -63,7 +63,7 @@ Summary:	GConf2 shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
 Group:		Libraries
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.19.0
+Requires:	glib2 >= 1:2.20.0
 Conflicts:	GConf2 < 2.24.0-2
 
 %description libs
@@ -190,6 +190,8 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gco
 cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/ca@valencia
+
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
@@ -230,9 +232,9 @@ done
 %{_sysconfdir}/gconf/gconf.xml.*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/gconf/path
 %dir %{_sysconfdir}/gconf/schemas
-%{_datadir}/PolicyKit/policy/org.gnome.gconf.defaults.policy
 %{_datadir}/dbus-1/services/org.gnome.GConf.service
 %{_datadir}/dbus-1/system-services/org.gnome.GConf.Defaults.service
+%{_datadir}/polkit-1/actions/org.gnome.gconf.defaults.policy
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
