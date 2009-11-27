@@ -22,6 +22,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	glib2-devel >= 1:2.20.0
