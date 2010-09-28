@@ -10,22 +10,23 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.31.91
+Version:	2.32.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.31/GConf-%{version}.tar.bz2
-# Source0-md5:	e661a8f5d59f603082604f81b184ef9d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.32/GConf-%{version}.tar.bz2
+# Source0-md5:	b161da6a1ab090b649aed3111003b0bb
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	glib2-devel >= 1:2.21.10
+BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	gobject-introspection-devel >= 0.9.5
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
@@ -37,6 +38,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.92
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
+Requires(post,postun):	glib2 >= 1:2.24.0
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
@@ -64,7 +66,7 @@ Summary:	GConf2 shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
 Group:		Libraries
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.20.0
+Requires:	glib2 >= 1:2.26.0
 Conflicts:	GConf2 < 2.24.0-2
 
 %description libs
@@ -84,6 +86,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
 Requires:	dbus-devel >= 1.0.0
+Requires:	glib2-devel >= 1:2.26.0
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
@@ -196,7 +199,7 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/en@shaw
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
+rm -f $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -213,6 +216,13 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
         rm -f "$GCONF_DIR/%gconf.xml"
     fi
 done
+
+%{_bindir}/gio-querymodules %{_libdir}/gio/modules
+
+%postun
+umask 022
+%{_bindir}/gio-querymodules %{_libdir}/gio/modules
+exit 0
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
