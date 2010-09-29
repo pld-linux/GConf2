@@ -11,7 +11,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	2.32.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.32/GConf-%{version}.tar.bz2
@@ -186,7 +186,7 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/{schemas,gconf.xml.system}}
+install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gconf/{schemas,gconf.xml.system},%{_datadir}/GConf/gsettings}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -251,6 +251,7 @@ exit 0
 %{_datadir}/dbus-1/system-services/org.gnome.GConf.Defaults.service
 %{_datadir}/polkit-1/actions/org.gnome.gconf.defaults.policy
 %dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
 %{_mandir}/man1/gsettings-data-convert.1*
