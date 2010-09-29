@@ -10,22 +10,23 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	2.28.1
+Version:	2.32.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.28/GConf-%{version}.tar.bz2
-# Source0-md5:	27663faf0af4f6a6d534de9270f6d24a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/2.32/GConf-%{version}.tar.bz2
+# Source0-md5:	b161da6a1ab090b649aed3111003b0bb
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	gobject-introspection-devel >= 0.9.5
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
@@ -37,6 +38,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.92
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
+Requires(post,postun):	glib2 >= 1:2.24.0
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
@@ -64,7 +66,7 @@ Summary:	GConf2 shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
 Group:		Libraries
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.20.0
+Requires:	glib2 >= 1:2.26.0
 Conflicts:	GConf2 < 2.24.0-2
 
 %description libs
@@ -84,6 +86,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
 Requires:	dbus-devel >= 1.0.0
+Requires:	glib2-devel >= 1:2.26.0
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
@@ -196,7 +199,7 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/en@shaw
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/GConf2/lib*.{la,a}
+rm -f $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -214,6 +217,13 @@ for GCONF_DIR in %{_sysconfdir}/gconf/gconf.xml.mandatory %{_sysconfdir}/gconf/g
     fi
 done
 
+%{_bindir}/gio-querymodules %{_libdir}/gio/modules
+
+%postun
+umask 022
+%{_bindir}/gio-querymodules %{_libdir}/gio/modules
+exit 0
+
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
 
@@ -221,13 +231,17 @@ done
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/gconf-merge-tree
+%attr(755,root,root) %{_bindir}/gsettings-data-convert
+%attr(755,root,root) %{_bindir}/gsettings-schema-convert
 %attr(755,root,root) %{_libexecdir}/gconf-defaults-mechanism
 %attr(755,root,root) %{_libexecdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libexecdir}/gconfd-2
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
+%attr(755,root,root) %{_libdir}/gio/modules/libgsettingsgconfbackend.so
 %{_sysconfdir}/dbus-1/system.d/org.gnome.GConf.Defaults.conf
+%{_sysconfdir}/xdg/autostart/gsettings-data-convert.desktop
 %dir %{_sysconfdir}/gconf
 %dir %{_sysconfdir}/gconf/2
 %{_sysconfdir}/gconf/gconf.xml.*
@@ -239,6 +253,8 @@ done
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/schema
 %{_datadir}/sgml/gconf
+%{_mandir}/man1/gsettings-data-convert.1*
+%{_mandir}/man1/gsettings-schema-convert.1*
 
 %files libs -f %{name}.lang
 %defattr(644,root,root,755)
@@ -246,6 +262,7 @@ done
 %attr(755,root,root) %ghost %{_libdir}/libgconf-2.so.4
 %attr(755,root,root) %{_bindir}/gconftool-2
 %{_mandir}/man1/gconftool-2.1*
+%{_libdir}/girepository-1.0/GConf-2.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -255,6 +272,7 @@ done
 %{_includedir}/gconf2
 %{_aclocaldir}/gconf-2.m4
 %{_pkgconfigdir}/gconf-2.0.pc
+%{_datadir}/gir-1.0/GConf-2.0.gir
 
 %if %{with static_libs}
 %files static
