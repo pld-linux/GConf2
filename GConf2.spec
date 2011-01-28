@@ -36,6 +36,7 @@ BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.92
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post):	findutils
 Requires(post,postun):	glib2 >= 1:2.24.0
