@@ -195,12 +195,10 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_sysconfdir}/gco
 cp examples/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/en@shaw
-
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
