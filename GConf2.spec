@@ -42,7 +42,7 @@ BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post):	findutils
-Requires(post,postun):	glib2 >= 1:2.28.0
+Requires(post,postun):	glib2 >= 1:2.31.0
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
@@ -70,7 +70,7 @@ Summary:	GConf2 shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona GConf2
 Group:		Libraries
 Requires:	ORBit2 >= 1:2.14.9
-Requires:	glib2 >= 1:2.28.0
+Requires:	glib2 >= 1:2.31.0
 Conflicts:	GConf2 < 2.24.0-2
 
 %description libs
@@ -90,7 +90,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
 Requires:	dbus-devel >= 1.0.0
-Requires:	glib2-devel >= 1:2.28.0
+Requires:	glib2-devel >= 1:2.31.0
 Requires:	libxml2-devel >= 1:2.6.30
 Obsoletes:	libGConf2-devel
 
