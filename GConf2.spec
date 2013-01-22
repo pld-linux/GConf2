@@ -10,12 +10,12 @@ Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
-Version:	3.2.5
+Version:	3.2.6
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-%{version}.tar.xz
-# Source0-md5:	1b803eb4f8576c572d072692cf40c9d8
+# Source0-md5:	2b16996d0e4b112856ee5c59130e822c
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 URL:		http://www.gnome.org/
@@ -181,6 +181,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %{__autoconf}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -235,7 +236,6 @@ exit 0
 %attr(755,root,root) %{_bindir}/gsettings-data-convert
 %attr(755,root,root) %{_bindir}/gsettings-schema-convert
 %attr(755,root,root) %{_libexecdir}/gconf-defaults-mechanism
-%attr(755,root,root) %{_libexecdir}/gconf-sanity-check-2
 %attr(755,root,root) %{_libexecdir}/gconfd-2
 %dir %{_libdir}/GConf2
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
