@@ -4,7 +4,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
-#
+
 Summary:	GNOME2 configuration database system
 Summary(pl.UTF-8):	System konfiguracyjnej bazy danych dla GNOME 2
 Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
@@ -44,6 +44,7 @@ BuildRequires:	xz
 Requires(post):	findutils
 Requires(post,postun):	glib2 >= 1:2.31.0
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	psmisc >= 20.1-2
 Obsoletes:	GConf2-xinitrc
 Obsoletes:	libGConf2
 # sr@Latn vs. sr@latin
@@ -241,7 +242,7 @@ exit 0
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-oldxml.so
 %attr(755,root,root) %{_libdir}/GConf2/libgconfbackend-xml.so
 %attr(755,root,root) %{_libdir}/gio/modules/libgsettingsgconfbackend.so
-%{_sysconfdir}/dbus-1/system.d/org.gnome.GConf.Defaults.conf
+/etc/dbus-1/system.d/org.gnome.GConf.Defaults.conf
 %{_sysconfdir}/xdg/autostart/gsettings-data-convert.desktop
 %dir %{_sysconfdir}/gconf
 %dir %{_sysconfdir}/gconf/2

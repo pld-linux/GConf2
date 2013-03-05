@@ -15,7 +15,7 @@ diff -d -u -p -U10 -r1.102 gconftool.c
        
        gconf_engine_unref (conf);
  
-+      g_spawn_command_line_sync ("/usr/bin/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
++      g_spawn_command_line_sync ("/usr/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
 +
        return retval;
      }
@@ -29,7 +29,7 @@ diff -d -u -p -U10 -r1.102 gconftool.c
        
        gconf_engine_unref (conf);
 +
-+      g_spawn_command_line_sync ("/usr/bin/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
++      g_spawn_command_line_sync ("/usr/killall -q -TERM " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
  
        return retval;
      }
