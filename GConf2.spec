@@ -1,4 +1,3 @@
-#
 # TODO:
 # - update documentation to follow changes introduced in Patch0
 #
@@ -11,13 +10,14 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	3.2.6
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-%{version}.tar.xz
 # Source0-md5:	2b16996d0e4b112856ee5c59130e822c
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
+Patch2:		workaround-crash.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
@@ -171,6 +171,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %setup -q -n GConf-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__gtkdocize}
