@@ -10,7 +10,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	3.2.6
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-%{version}.tar.xz
@@ -18,7 +18,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-%{version}.tar.x
 Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 Patch2:		workaround-crash.patch
-URL:		http://www.gnome.org/
+URL:		https://projects-old.gnome.org/gconf/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
@@ -207,6 +207,8 @@ cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # no *.{la,a} for modules - shut up check-files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgconf-2.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -236,7 +238,7 @@ exit 0
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/gconf-merge-tree
 %attr(755,root,root) %{_bindir}/gsettings-data-convert
 %attr(755,root,root) %{_bindir}/gsettings-schema-convert
@@ -273,9 +275,7 @@ exit 0
 
 %files devel
 %defattr(644,root,root,755)
-%doc ChangeLog TODO
 %attr(755,root,root) %{_libdir}/libgconf-2.so
-%{_libdir}/libgconf-2.la
 %{_includedir}/gconf2
 %{_aclocaldir}/gconf-2.m4
 %{_pkgconfigdir}/gconf-2.0.pc
