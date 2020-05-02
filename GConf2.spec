@@ -2,6 +2,7 @@
 # - update documentation to follow changes introduced in Patch0
 #
 # Conditional build:
+%bcond_with	apidocs		# build apidocs (broken with new gtk-doc)
 %bcond_without	static_libs	# don't build static libraries
 
 Summary:	GNOME2 configuration database system
@@ -29,7 +30,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.31.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.0.0
-BuildRequires:	gtk-doc >= 1.8
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.30
@@ -177,7 +178,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %patch2 -p1
 
 %build
-%{__gtkdocize}
+%{?with_apidocs:%{__gtkdocize}}
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
@@ -188,7 +189,7 @@ automatycznie skonfigurowane do używania tych adresów.
 %configure \
 	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
-	--enable-gtk-doc \
+	%{__enable_disable apidocs gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
@@ -287,9 +288,11 @@ exit 0
 %{_libdir}/libgconf-2.a
 %endif
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/gconf
+%endif
 
 %files examples
 %defattr(644,root,root,755)
