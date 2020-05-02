@@ -207,7 +207,10 @@ cp examples/*.schemas $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %find_lang %{name}
 
 # no *.{la,a} for modules - shut up check-files
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.la
+%if %{with static_libs}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{GConf2,gio/modules}/lib*.a
+%endif
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libgconf-2.la
 
