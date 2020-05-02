@@ -177,6 +177,8 @@ automatycznie skonfigurowane do używania tych adresów.
 %patch1 -p1
 %patch2 -p1
 
+%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' gsettings/gsettings-schema-convert
+
 %build
 %{?with_apidocs:%{__gtkdocize}}
 %{__glib_gettextize}
