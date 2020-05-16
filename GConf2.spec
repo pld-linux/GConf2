@@ -39,7 +39,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.92
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post):	findutils
