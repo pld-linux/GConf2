@@ -1,8 +1,7 @@
-diff -urN GConf-2.21.1/backends/Makefile.am GConf-2.21.1.new/backends/Makefile.am
---- GConf-2.21.1/backends/Makefile.am	2007-06-25 13:11:19.000000000 +0200
-+++ GConf-2.21.1.new/backends/Makefile.am	2008-01-09 18:35:59.000000000 +0100
-@@ -2,7 +2,7 @@
- 	$(DEPENDENT_WITH_XML_CFLAGS) \
+--- GConf-3.2.6/backends/Makefile.am.orig	2011-08-16 02:59:31.000000000 +0000
++++ GConf-3.2.6/backends/Makefile.am	2022-11-10 09:34:27.690733736 +0000
+@@ -3,7 +3,7 @@
+ 	$(DEPENDENT_ORBIT_CFLAGS) \
  	-DGCONF_ENABLE_INTERNALS=1 -DG_LOG_DOMAIN=\"GConf-Backends\"
  
 -backenddir = $(pkglibdir)/$(MAJOR_VERSION)
@@ -10,10 +9,9 @@ diff -urN GConf-2.21.1/backends/Makefile.am GConf-2.21.1.new/backends/Makefile.a
  
  if LDAP_SUPPORT
  EVOLDAP_BACKEND = libgconfbackend-evoldap.la
-diff -urN GConf-2.21.1/gconf/Makefile.am GConf-2.21.1.new/gconf/Makefile.am
---- GConf-2.21.1/gconf/Makefile.am	2007-11-01 20:35:40.000000000 +0100
-+++ GConf-2.21.1.new/gconf/Makefile.am	2008-01-09 18:38:09.000000000 +0100
-@@ -10,12 +10,12 @@
+--- GConf-3.2.6/gconf/Makefile.am.orig	2013-01-22 01:09:35.000000000 +0000
++++ GConf-3.2.6/gconf/Makefile.am	2022-11-10 09:34:27.690733736 +0000
+@@ -12,12 +12,12 @@
  	-DPREFIX=\""$(prefix)"\"					\
  	-DGCONF_LOCALE_DIR=\""$(datadir)/locale"\"			\
          -DGCONF_SRCDIR=\""$(absolute_top_srcdir)"\"			\
@@ -28,7 +26,7 @@ diff -urN GConf-2.21.1/gconf/Makefile.am GConf-2.21.1.new/gconf/Makefile.am
  	-DVERSION=\""$(VERSION)"\"					\
  	-DGCONF_ENABLE_INTERNALS=1					\
  	-DGCONFD=\""$(GCONFD_BINARY_NAME)$(EXEEXT)"\"			\
-@@ -60,7 +60,7 @@
+@@ -59,7 +59,7 @@
  	gconf-engine.h		\
  	gconf-client.h
  
@@ -37,8 +35,8 @@ diff -urN GConf-2.21.1/gconf/Makefile.am GConf-2.21.1.new/gconf/Makefile.am
  gconfinclude_HEADERS = 		\
  	$(gconf_headers) 	\
  	gconf-enum-types.h
-@@ -128,15 +128,15 @@
- 		<$(srcdir)/default.path.in >default.path
+@@ -175,15 +175,15 @@
+ service_DATA = org.gnome.GConf.service
  
  install-data-local: default.path
 -	$(mkinstalldirs) $(DESTDIR)$(sysgconfdir)/$(MAJOR_VERSION)
@@ -57,12 +55,11 @@ diff -urN GConf-2.21.1/gconf/Makefile.am GConf-2.21.1.new/gconf/Makefile.am
  
  gconfmarshal.h: gconfmarshal.list $(GLIB_GENMARSHAL)
  	$(GLIB_GENMARSHAL) $< --header --prefix=gconf_marshal > $@
-diff -urN GConf-2.21.1/gconf-2.0.pc.in GConf-2.21.1.new/gconf-2.0.pc.in
---- GConf-2.21.1/gconf-2.0.pc.in	2008-01-08 15:43:09.000000000 +0100
-+++ GConf-2.21.1.new/gconf-2.0.pc.in	2008-01-09 18:38:43.000000000 +0100
+--- GConf-3.2.6/gconf-2.0.pc.in.orig	2011-08-16 02:59:31.000000000 +0000
++++ GConf-3.2.6/gconf-2.0.pc.in	2022-11-10 09:34:27.690733736 +0000
 @@ -11,4 +11,4 @@
- Requires: glib
- Requires.private: ORBit-2.0
+ Requires: glib-2.0
+ Requires.private: @IPC_REQUIRES@ gio-2.0
  Libs: -L${libdir} -lgconf-@MAJOR_VERSION@
 -Cflags: -I${includedir}/gconf/@MAJOR_VERSION@
 +Cflags: -I${includedir}/gconf@MAJOR_VERSION@
