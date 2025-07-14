@@ -11,7 +11,7 @@ Summary(pt_BR.UTF-8):	Sistema de Configuração do GNOME 2
 Summary(ru.UTF-8):	Система конфигурации GNOME 2
 Name:		GConf2
 Version:	3.2.6
-Release:	8
+Release:	9
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-%{version}.tar.xz
@@ -20,6 +20,8 @@ Patch0:		%{name}-NO_MAJOR_VERSION.patch
 Patch1:		%{name}-reload.patch
 Patch2:		workaround-crash.patch
 Patch3:		python3.patch
+Patch4:		GConf-3.2.6-Use-gettext-0.21.patch
+Patch5:		example.patch
 URL:		https://projects-old.gnome.org/gconf/
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf >= 2.60
@@ -172,17 +174,20 @@ automatycznie skonfigurowane do używania tych adresów.
 
 %prep
 %setup -q -n GConf-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
 
 %build
 %{?with_apidocs:%{__gtkdocize}}
+%{__autopoint}
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoheader}
 %{__autoconf}
 %{__automake}
