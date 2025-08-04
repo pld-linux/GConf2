@@ -29,11 +29,13 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.0.0
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gettext-autopoint
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.31.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
+BuildRequires:	gtk-doc-automake
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.30
